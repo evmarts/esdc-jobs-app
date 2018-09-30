@@ -4,6 +4,10 @@ import FetchRandomUser from "./FetchRandomUser";
 import FetchJobs from "./FetchJobs";
 
 class App extends Component {
+  state = {
+    response: ""
+  };
+
   onSubmit = fields => {
     this.setState({ fields });
     console.log("App comp got: ", fields);
@@ -12,8 +16,8 @@ class App extends Component {
   render() {
     return (
       <div>
-            <Form onSubmit={fields => this.onSubmit(fields)} />
-            <FetchRandomUser />
+        <Form onSubmit={fields => this.onSubmit(fields)} />
+        <FetchJobs/>
       </div>
     );
   }

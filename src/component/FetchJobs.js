@@ -1,25 +1,26 @@
 import React from "react";
+import response from "../response";
 
 export default class FetchJobs extends React.Component {
   state = {
     loading: true,
-    jobs: null
+    jobs: null,
+    idx: 0,
+    resultCount: null
   };
 
   async componentDidMount() {
-    const url =
-      "http://localhost:8000/api/jobs?aptitudes=G3,V3,N4,S4,P4,Q3,K3,F3,M4&physical=V2,C0,H2,B1,L1,S1&environment=L1&interests=S,M,d&dpt=D3,P6,T7&et_value=3";
-    const response = await fetch(url,  {mode: 'no-cors'});
-    console.log(response);
-    const data = await response.json();
+    let data = response.response.result;
     this.setState({
       loading: false,
-      jobs: data
+      jobs: data,
+      resultCount: data.length
     });
   }
 
   handleNext = () => {
     if (this.state.idx < this.state.resultCount - 1) {
+      console.log("here");
       this.setState(
         {
           idx: this.state.idx + 1
@@ -33,6 +34,7 @@ export default class FetchJobs extends React.Component {
 
   handleBack = () => {
     if (this.state.idx > 0) {
+      console.log("here");
       this.setState(
         {
           idx: this.state.idx - 1
@@ -47,14 +49,33 @@ export default class FetchJobs extends React.Component {
   render() {
     return (
       <div align="center">
-        <button onClick={this.handleBack}>back</button>
         {this.state.loading || !this.state.jobs ? (
           <div>loading...</div>
         ) : (
           <div>
-            <img src={this.state.jobs} />
+            <div>
+              <h3 style={{ display: "inline-block", textAlign: "left" }}>
+                {this.state.jobs[this.state.idx].sub_noc}
+              </h3>
+              <h3 style={{ display: "inline-block", textAlign: "left" }}>
+                {" - "}
+              </h3>
+              <h3 style={{ display: "inline-block", textAlign: "left" }}>
+                {this.state.jobs[this.state.idx].sub_noc_title}
+              </h3>
+              <div style={{ width: 400, textAlign: "left" }}>
+                {this.state.jobs[this.state.idx].sub_noc_description}
+              </div>
+            </div>
           </div>
         )}
+        <div>
+          {"Occupation results: " +
+            (this.state.idx + 1) +
+            "/" +
+            this.state.resultCount}
+        </div>
+        <button onClick={this.handleBack}>back</button>
         <button onClick={this.handleNext}>next</button>
       </div>
     );
