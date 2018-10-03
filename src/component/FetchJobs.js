@@ -1,7 +1,8 @@
 import React from "react";
 import response from "../response";
+import axios from "axios";
 
-export default class FetchJobs extends React.Component {
+export default class FetchJobs2 extends React.Component {
   state = {
     loading: true,
     jobs: null,
@@ -10,11 +11,14 @@ export default class FetchJobs extends React.Component {
   };
 
   async componentDidMount() {
-    let data = response.response.result;
+    const response = await axios.get(
+      "http://esdc-jobs-api.herokuapp.com/api/jobs?aptitudesMin=G3,V3,N4,S4,P4,Q3,K3,F3,M4&aptitudesMax=G3,V3,N4,S4,P4,Q3,K3,F3,M4&physicalMin=V2,C0,H2,B1,L1,S1&physicalMax=V2,C0,H2,B1,L1,S1&environment=L1&interests=S,M,d&dptMin=D3,P6,T7&dptMax=D3,P6,T7&et_value=3"
+    );
+    console.log(response.data);
     this.setState({
       loading: false,
-      jobs: data,
-      resultCount: data.length
+      jobs: response.data.result,
+      resultCount: response.data.result.length
     });
   }
 
@@ -47,6 +51,7 @@ export default class FetchJobs extends React.Component {
   };
 
   render() {
+    console.log(this.state.jobs);
     return (
       <div align="center">
         {this.state.loading || !this.state.jobs ? (
