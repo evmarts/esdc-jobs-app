@@ -22,19 +22,9 @@ export default class FetchJobs2 extends React.Component {
       dptMax: this.props.fields.dptMax.join(),
       et_value: this.props.fields.employmentRequirementsMin
     };
-    console.log({params})
-    const reqString = `http://esdc-jobs-api.herokuapp.com/api/jobs?aptitudesMin=${
-      params.aptitudesMin.toString()
-    }&aptitudesMax=${params.aptitudesMax.toString()}&physicalMin=${
-      params.aptitudesMin
-    }&physicalMax=${params.physicalMin.toString()}&environment=${
-      params.interests}`
-    // }&interests=${params.interests}&dptMin=${params.dptMin}&dptMax=${
-      // params.dptMax
-    // }&et_value=${params.et_value}`;
-    console.log(reqString);
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/jobs?aptitudesMin=G3,V3,N4,S4,P4,Q3,K3,F3,M4&aptitudesMax=G3,V3,N4,S4,P4,Q3,K3,F3,M4"
+      "http://esdc-jobs-api.herokuapp.com/api/jobs",
+      {params}
     );
 
     this.setState({
