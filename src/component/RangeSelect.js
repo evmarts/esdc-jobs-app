@@ -3,6 +3,7 @@ import React from "react";
 export default class RangeSelect extends React.Component {
   state = {};
   change = e => {
+    console.log({e})
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -14,28 +15,34 @@ export default class RangeSelect extends React.Component {
   };
 
   render() {
-      console.log('props', Object.keys(this.props.traitObj))
+    const apKeys = Object.keys(this.props.traitObj.values);
     return (
       <div>
-        {/* {this.props.traitObj.map(trait => (
+        <h3>{this.props.traitObj.full}</h3>
+        {apKeys.map(apK => (
           <div>
-            <select name="aptitude_G_min" onChange={e => this.change(e)}>
+            <label>{apK}</label>
+            <select
+              name={this.props.trait + { apK } + "_min"}
+              onChange={e => this.change(e)}
+            >
               <option value="" />
-              <option value="G1_lb">1</option>
-              <option value="G2_lb">2</option>
-              <option value="G3_lb">3</option>
-              <option value="G3_lb">4</option>
+              {this.props.traitObj.values[apK].options.map(op => (
+                <option value={apK + op + "_min"}>{op}</option>
+              ))}
             </select>
             <label>–</label>
-            <select name="aptitude_G_mX" onChange={e => this.change(e)}>
+            <select
+              name={this.props.trait + { apK } + "_max"}
+              onChange={e => this.change(e)}
+            >
               <option value="" />
-              <option value="G1_ub">1</option>
-              <option value="G2_ub">2</option>
-              <option value="G3_ub">3</option>
-              <option value="G3_ub">4</option>
+              {this.props.traitObj.values[apK].options.map(op => (
+                <option value={apK + op + "_max"}>{op}</option>
+              ))}
             </select>
           </div>
-        ))} */}
+        ))}
       </div>
     );
   }

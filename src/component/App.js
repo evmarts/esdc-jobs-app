@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Form from "./Form";
-import FetchRandomUser from "./FetchRandomUser";
 import FetchJobs from "./FetchJobs";
 import RangeSelect from "./RangeSelect";
 import RangeForm from "./RangeForm";
@@ -10,17 +9,23 @@ class App extends Component {
     response: ""
   };
 
-  onSubmit = fields => {
-    this.setState({ fields });
-    console.log("App comp got: ", fields);
+  onSubmit = async fields => {
+    await this.setState({ fields })
   };
+
+  DisplayResult = props => {
+    const isSubmitted = this.state.fields
+    if (isSubmitted){
+      return <FetchJobs fields = {this.state.fields}></FetchJobs>
+    }
+    return <div>no go</div>
+  }
 
   render() {
     return (
       <div>
         <Form onSubmit={fields => this.onSubmit(fields)} />
-        <FetchJobs />
-        <RangeForm />
+        <this.DisplayResult/>
       </div>
     );
   }

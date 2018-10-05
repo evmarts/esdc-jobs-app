@@ -26,12 +26,11 @@ export default class RangeForm extends React.Component {
   };
 
   render() {
-    console.log({ traits });
     return (
       <form>
         <RangeSelect
-          trait={"aptitude_g"}
-          traitObj={traits.aptitudes.values}
+          trait={"aptitude"}
+          traitObj={traits.aptitudes}
         />
       </form>
     );

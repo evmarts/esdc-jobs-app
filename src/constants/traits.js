@@ -1,4 +1,5 @@
 const aptitudes = {
+  full: "Aptitudes",
   total: 9,
   values: {
     G: {
@@ -10,7 +11,7 @@ const aptitudes = {
       options: [1, 2, 3, 4, 5]
     },
     N: {
-      full: "Numerica Ability",
+      full: "Numerical Ability",
       options: [1, 2, 3, 4, 5]
     },
     S: {
@@ -41,6 +42,7 @@ const aptitudes = {
 };
 
 const interests = {
+  full: "Interests",
   total: 3,
   values: {
     firstChoice: {
@@ -59,6 +61,7 @@ const interests = {
 };
 
 const dpt = {
+  full: "Data/Information, People, Things",
   total: 3,
   values: {
     data: {
@@ -77,6 +80,7 @@ const dpt = {
 };
 
 const physicalActivities = {
+  full: "Physical Activities",
   total: 6,
   values: {
     vision: {
@@ -107,6 +111,7 @@ const physicalActivities = {
 };
 
 const environmentalConditions = {
+  full: "Environmental Conditions",
   total: 3,
   values: {
     location: {
@@ -125,6 +130,7 @@ const environmentalConditions = {
 };
 
 const employmentRequirements = {
+  full: "Employment Requirements",
   total: 1,
   values: {
     education: {

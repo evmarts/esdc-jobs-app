@@ -11,10 +11,32 @@ export default class FetchJobs2 extends React.Component {
   };
 
   async componentDidMount() {
+    const params = {
+      aptitudesMin: this.props.fields.aptitudesMin.join(),
+      aptitudesMax: this.props.fields.aptitudesMax.join(),
+      physicalMin: this.props.fields.physicalActivitesMin.join(),
+      physicalMax: this.props.fields.physicalActivitesMax.join(),
+      environment: this.props.fields.environmentalConditionsMin.join(),
+      interests: this.props.fields.interests,
+      dptMin: this.props.fields.dptMin.join(),
+      dptMax: this.props.fields.dptMax.join(),
+      et_value: this.props.fields.employmentRequirementsMin
+    };
+    console.log({params})
+    const reqString = `http://esdc-jobs-api.herokuapp.com/api/jobs?aptitudesMin=${
+      params.aptitudesMin.toString()
+    }&aptitudesMax=${params.aptitudesMax.toString()}&physicalMin=${
+      params.aptitudesMin
+    }&physicalMax=${params.physicalMin.toString()}&environment=${
+      params.interests}`
+    // }&interests=${params.interests}&dptMin=${params.dptMin}&dptMax=${
+      // params.dptMax
+    // }&et_value=${params.et_value}`;
+    console.log(reqString);
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/jobs?aptitudesMin=G3,V3,N4,S4,P4,Q3,K3,F3,M4&aptitudesMax=G3,V3,N4,S4,P4,Q3,K3,F3,M4&physicalMin=V2,C0,H2,B1,L1,S1&physicalMax=V2,C0,H2,B1,L1,S1&environment=L1&interests=S,M,d&dptMin=D3,P6,T7&dptMax=D3,P6,T7&et_value=3"
+      "http://esdc-jobs-api.herokuapp.com/api/jobs?aptitudesMin=G3,V3,N4,S4,P4,Q3,K3,F3,M4&aptitudesMax=G3,V3,N4,S4,P4,Q3,K3,F3,M4"
     );
-    console.log(response.data);
+
     this.setState({
       loading: false,
       jobs: response.data.result,
@@ -24,34 +46,27 @@ export default class FetchJobs2 extends React.Component {
 
   handleNext = () => {
     if (this.state.idx < this.state.resultCount - 1) {
-      console.log("here");
       this.setState(
         {
           idx: this.state.idx + 1
         },
-        () => {
-          console.log("idx", this.state.idx);
-        }
+        () => {}
       );
     }
   };
 
   handleBack = () => {
     if (this.state.idx > 0) {
-      console.log("here");
       this.setState(
         {
           idx: this.state.idx - 1
         },
-        () => {
-          console.log("idx", this.state.idx);
-        }
+        () => {}
       );
     }
   };
 
   render() {
-    console.log(this.state.jobs);
     return (
       <div align="center">
         {this.state.loading || !this.state.jobs ? (
