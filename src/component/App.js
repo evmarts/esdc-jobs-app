@@ -22,6 +22,7 @@ class App extends Component {
   }
 
   render() {
+    // add more information to the displayed results
     return (
       <div>
         <Form onSubmit={fields => this.onSubmit(fields)} />
