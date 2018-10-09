@@ -24,7 +24,7 @@ export default class FetchJobs2 extends React.Component {
     };
     const response = await axios.get(
       "http://esdc-jobs-api.herokuapp.com/api/jobs",
-      {params}
+      { params }
     );
 
     this.setState({
@@ -58,24 +58,26 @@ export default class FetchJobs2 extends React.Component {
 
   render() {
     return (
-      <div align="center">
+      <div style={{textAlign: 'center'}}>
         {this.state.loading || !this.state.jobs ? (
           <div>loading...</div>
         ) : (
-          <div>
-            <div>
-              <h3 style={{ display: "inline-block", textAlign: "left" }}>
-                {this.state.jobs[this.state.idx].sub_noc}
-              </h3>
-              <h3 style={{ display: "inline-block", textAlign: "left" }}>
-                {" - "}
-              </h3>
-              <h3 style={{ display: "inline-block", textAlign: "left" }}>
-                {this.state.jobs[this.state.idx].sub_noc_title}
-              </h3>
-              <div style={{ width: 400, textAlign: "left" }}>
-                {this.state.jobs[this.state.idx].sub_noc_description}
-              </div>
+          <div style={{ backgroundColor: "#D8F3FF" , textAlign: "left", marginLeft: 200, marginRight: 200}}>
+            <label>Occupation: </label>
+            <div style={{ display: "inline-block", textAlign: "left" }}>
+              {this.state.jobs[this.state.idx].sub_noc_title} ({this.state.jobs[this.state.idx].sub_noc})
+            </div>
+            <br />
+            <label>Description: </label>
+            <div style={{ display: "inline-block", textAlign: "left" }}>
+              {this.state.jobs[this.state.idx].sub_noc_description}
+            </div>
+            <br />
+            <label>Example Titles: </label>
+            <div style={{ textAlign: "left" }}>
+              {this.state.jobs[this.state.idx].example_titles.map(title => {
+                return <div>-{title}</div>;
+              })}
             </div>
           </div>
         )}
