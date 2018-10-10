@@ -3,6 +3,7 @@ import Form from "./Form";
 import FetchJobs from "./FetchJobs";
 import RangeSelect from "./RangeSelect";
 import RangeForm from "./RangeForm";
+import SearchTool from "./SearchTool";
 
 class App extends Component {
   state = {
@@ -25,6 +26,7 @@ class App extends Component {
     // add more information to the displayed results
     return (
       <div>
+        <SearchTool></SearchTool>
         <Form onSubmit={fields => this.onSubmit(fields)} />
         <this.DisplayResult/>
       </div>
