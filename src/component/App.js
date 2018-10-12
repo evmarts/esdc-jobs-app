@@ -19,7 +19,7 @@ class App extends Component {
     if (isSubmitted){
       return <FetchJobs fields = {this.state.fields}></FetchJobs>
     }
-    return <div>no go</div>
+    return
   }
 
   render() {
