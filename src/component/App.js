@@ -26,7 +26,7 @@ class App extends Component {
     // add more information to the displayed results
     return (
       <div>
-        <SearchTool></SearchTool>
+        {/* <SearchTool></SearchTool> */}
         <Form onSubmit={fields => this.onSubmit(fields)} />
         <this.DisplayResult/>
       </div>
