@@ -11,24 +11,24 @@ class App extends Component {
   };
 
   onSubmit = async fields => {
-    await this.setState({ fields })
+    await this.setState({ fields });
   };
 
   DisplayResult = props => {
-    const isSubmitted = this.state.fields
-    if (isSubmitted){
-      return <FetchJobs fields = {this.state.fields}></FetchJobs>
+    const isSubmitted = this.state.fields;
+    if (isSubmitted) {
+      return <FetchJobs fields={this.state.fields} />;
     }
-    return
-  }
+    return <div />;
+  };
 
   render() {
     // add more information to the displayed results
     return (
       <div>
-        {/* <SearchTool></SearchTool> */}
+        {/* <SearchTool /> */}
         <Form onSubmit={fields => this.onSubmit(fields)} />
-        <this.DisplayResult/>
+        <this.DisplayResult />
       </div>
     );
   }
