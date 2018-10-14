@@ -111,7 +111,7 @@ class Form extends React.Component {
   render() {
     return (
       <form align="center">
-        <h3>Aptitudes</h3>
+        <h3>Aptitudes ⚖️</h3>
         <label>G</label>
         <select name="apG_lb" onChange={e => this.change(e)}>
           <option value="" />
@@ -292,7 +292,7 @@ class Form extends React.Component {
         </select>
         <br />
 
-        <h3>Interests</h3>
+        <h3>Interests 💡</h3>
         <label>🥇</label>
         <select name="in1" onChange={e => this.change(e)}>
           <option value="" />
@@ -339,7 +339,7 @@ class Form extends React.Component {
         </select>
         <br />
 
-        <h3>Data/Information, People, Things</h3>
+        <h3>Data/Information, People, Things 📈👥🕹</h3>
 
         <label>D</label>
         <select name="dptD_lb" onChange={e => this.change(e)}>
