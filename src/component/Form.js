@@ -138,6 +138,7 @@ class Form extends React.Component {
           <option value="V2">2</option>
           <option value="V3">3</option>
           <option value="V4">4</option>
+          <option value="V5">5</option>
         </select>
         <label>–</label>
         <select name="apV_ub" onChange={e => this.change(e)}>
@@ -146,6 +147,7 @@ class Form extends React.Component {
           <option value="V2">2</option>
           <option value="V3">3</option>
           <option value="V4">4</option>
+          <option value="V5">5</option>
         </select>
 
         <br />
@@ -157,6 +159,7 @@ class Form extends React.Component {
           <option value="N2">2</option>
           <option value="N3">3</option>
           <option value="N4">4</option>
+          <option value="N5">5</option>
         </select>
         <label>–</label>
         <select name="apN_ub" onChange={e => this.change(e)}>
@@ -165,6 +168,7 @@ class Form extends React.Component {
           <option value="N2">2</option>
           <option value="N3">3</option>
           <option value="N4">4</option>
+          <option value="N5">5</option>
         </select>
 
         <br />
@@ -176,6 +180,7 @@ class Form extends React.Component {
           <option value="S2">2</option>
           <option value="S3">3</option>
           <option value="S4">4</option>
+          <option value="S5">5</option>
         </select>
         <label>–</label>
         <select name="apS_ub" onChange={e => this.change(e)}>
@@ -184,6 +189,7 @@ class Form extends React.Component {
           <option value="S2">2</option>
           <option value="S3">3</option>
           <option value="S4">4</option>
+          <option value="S5">5</option>
         </select>
 
         <br />
@@ -214,6 +220,7 @@ class Form extends React.Component {
           <option value="Q2">2</option>
           <option value="Q3">3</option>
           <option value="Q4">4</option>
+          <option value="Q5">5</option>
         </select>
         <label>–</label>
         <select name="apQ_ub" onChange={e => this.change(e)}>
@@ -222,6 +229,7 @@ class Form extends React.Component {
           <option value="Q2">2</option>
           <option value="Q3">3</option>
           <option value="Q4">4</option>
+          <option value="Q5">5</option>
         </select>
 
         <br />
@@ -252,6 +260,7 @@ class Form extends React.Component {
           <option value="F2">2</option>
           <option value="F3">3</option>
           <option value="F4">4</option>
+          <option value="F5">5</option>
         </select>
         <label>–</label>
         <select name="apF_ub" onChange={e => this.change(e)}>
@@ -260,6 +269,7 @@ class Form extends React.Component {
           <option value="F2">2</option>
           <option value="F3">3</option>
           <option value="F4">4</option>
+          <option value="F5">5</option>
         </select>
 
         <br />
