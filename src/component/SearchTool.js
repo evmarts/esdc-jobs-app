@@ -21,6 +21,10 @@ class Search extends Component {
     });
   };
 
+  handleResultClick = async (i, result) => {
+    // make a call to the DB for this noc (the results should include a sub_noc/noc)
+  }
+
   render() {
     return (
       <form>
@@ -29,11 +33,21 @@ class Search extends Component {
           ref={input => (this.search = input)}
           onChange={this.handleInputChange}
         />
-        <p>
-          {this.state.results.map(result => {
-            return <div>{result}</div>;
+        <div>
+          {this.state.results.map((result, i) => {
+            return (
+              <div
+                className={"row"}
+                key={i}
+                onClick={() => {
+                  this.handleResultClick(i, result);
+                }}
+              >
+                {result}
+              </div>
+            );
           })}
-        </p>
+        </div>
       </form>
     );
   }

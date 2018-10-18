@@ -84,7 +84,7 @@ class App extends Component {
       return (
         <div>
           <this.TopNav />
-          <div>Search here</div>
+          <SearchTool />
         </div>
       );
     }
