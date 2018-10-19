@@ -4,13 +4,14 @@ import FetchJobs from "./FetchJobs";
 import SearchTool from "./SearchTool";
 import OccupationForm from "./OccupationForm";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+import AptitudesForm from "./AptitudesForm";
 
 class App extends Component {
   state = {
     response: "",
     isFormVisible: false,
     isSearchVisible: false,
-    fields: { aptitudesMin: "3", aptitudesMax: "3" }
+    fields: ""
   };
 
   handleFormSelect = () => {
@@ -52,7 +53,9 @@ class App extends Component {
   };
 
   onSubmit = async fields => {
+    console.log('yoooo')
     await this.setState({ fields });
+    console.log(this.state.fields);
   };
 
   DisplayResult = props => {
@@ -69,7 +72,7 @@ class App extends Component {
       return (
         <div>
           <this.TopNav />
-          <div>Form here</div>
+          <OccupationForm onSubmit={fields => this.onSubmit(fields)}/>
         </div>
       );
     }
@@ -88,7 +91,6 @@ class App extends Component {
         {/* <SearchTool /> */}
         {/* <Form onSubmit={fields => this.onSubmit(fields)} /> */}
         {/* <this.DisplayResult /> */}
-        <OccupationForm />
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React from "react";
-import descriptors from "../constants/descriptors";
 import AptitudesForm from "./AptitudesForm";
 import DptForm from "./DptForm";
 import EmploymentConditionsForm from "./EmploymentConditionsForm";
@@ -17,12 +16,12 @@ export default class OccupationForm extends React.Component {
   render() {
     return (
       <div>
-        <AptitudesForm />
+        <AptitudesForm onSubmit={fields => this.props.onSubmit(fields)}/>
         <InterestsFrom />
         <DptForm />
         <PhysicalActvitiesForm />
         <EnvironmentalConditionsForm />
-        <EmploymentConditionsForm />\
+        <EmploymentConditionsForm />
       </div>
     );
   }
