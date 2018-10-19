@@ -22,7 +22,7 @@ export default class OccupationForm extends React.Component {
         <DptForm />
         <PhysicalActvitiesForm />
         <EnvironmentalConditionsForm />
-        <EmploymentConditionsForm />
+        <EmploymentConditionsForm />\
       </div>
     );
   }

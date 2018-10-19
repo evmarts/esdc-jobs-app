@@ -7,7 +7,7 @@ export default class AptitudesForm extends React.Component {
     this.state = {};
   }
 
-  render () {
-    return(<div>AptitudesForm</div>)
+  render() {
+    return <div>AptitudesForm</div>;
   }
 }
