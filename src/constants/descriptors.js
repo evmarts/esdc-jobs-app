@@ -140,7 +140,7 @@ const employmentRequirements = {
   }
 };
 
-const traits = {
+const descriptors = {
     aptitudes,
     interests,
     dpt,
@@ -150,5 +150,5 @@ const traits = {
   };
 
 module.exports = {
-  traits
+  descriptors
 };
