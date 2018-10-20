@@ -45,15 +45,15 @@ const interests = {
   full: "Interests",
   total: 3,
   values: {
-    firstChoice: {
+    "1": {
       full: "First Descriptive Factor",
       options: ["D", "I", "M", "O", "S", "d", "i", "m", "o", "s"]
     },
-    secondChoice: {
+    "2": {
       full: "Second Descriptive Factor",
       options: ["D", "I", "M", "O", "S", "d", "i", "m", "o", "s"]
     },
-    thirdChoice: {
+    "3": {
       full: "Third Descriptive Factor",
       options: ["D", "I", "M", "O", "S", "d", "i", "m", "o", "s"]
     }
@@ -64,15 +64,15 @@ const dpt = {
   full: "Data/Information, People, Things",
   total: 3,
   values: {
-    data: {
+    D: {
       full: "Data/Information",
       options: [1, 2, 3, 4, 5, 6, 7, 8]
     },
-    people: {
+    P: {
       full: "People",
       options: [1, 2, 3, 4, 5, 6, 7, 8]
     },
-    things: {
+    T: {
       full: "Things",
       options: [1, 2, 3, 4, 5, 6, 7, 8]
     }
@@ -83,29 +83,29 @@ const physicalActivities = {
   full: "Physical Activities",
   total: 6,
   values: {
-    vision: {
+    V: {
       full: "Vision",
-      option: [1, 2, 3, 4]
+      options: [1, 2, 3, 4]
     },
-    colourDiscrimination: {
+    C: {
       full: "Colour Discrimination",
-      option: [0, 1]
+      options: [0, 1]
     },
-    hearing: {
+    H: {
       full: "Hearing",
-      option: [1, 2, 3]
+      options: [1, 2, 3]
     },
-    bodyPosition: {
+    B: {
       full: "Body Position",
-      option: [1, 2, 3, 4]
+      options: [1, 2, 3, 4]
     },
-    limbCoordination: {
+    L: {
       full: "Limb Co-ordination",
-      option: [0, 1, 2]
+      options: [0, 1, 2]
     },
-    strength: {
+    S: {
       full: "Strength",
-      option: [1, 2, 3, 4]
+      options: [1, 2, 3, 4]
     }
   }
 };
@@ -114,15 +114,15 @@ const environmentalConditions = {
   full: "Environmental Conditions",
   total: 3,
   values: {
-    location: {
+    L: {
       full: "Location",
       options: [1, 2, 3, 4]
-    },
-    hazards: {
+    }, 
+    H: {
       full: "Hazards",
       options: [1, 2, 3, 4, 5, 6, 7, 8]
     },
-    discomforts: {
+    D: {
       full: "Discomforts",
       options: [1, 2, 3, 4, 5]
     }
@@ -133,7 +133,7 @@ const employmentRequirements = {
   full: "Employment Requirements",
   total: 1,
   values: {
-    education: {
+    E: {
       full: "Education/Training Indicators",
       options: [1, 2, 3, 4, 5, 6, 7, 8, "+", "R"]
     }

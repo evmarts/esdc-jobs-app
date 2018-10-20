@@ -52,12 +52,6 @@ class App extends Component {
     );
   };
 
-  onSubmit = async fields => {
-    console.log('yoooo')
-    await this.setState({ fields });
-    console.log(this.state.fields);
-  };
-
   DisplayResult = props => {
     const isSubmitted = this.state.fields;
     if (isSubmitted) {
@@ -72,7 +66,7 @@ class App extends Component {
       return (
         <div>
           <this.TopNav />
-          <OccupationForm onSubmit={fields => this.onSubmit(fields)}/>
+          <OccupationForm display="inline-block"/>
         </div>
       );
     }

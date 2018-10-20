@@ -2,13 +2,8 @@ import React from "react";
 import descriptors from "../constants/descriptors";
 
 export default class AptitudesForm extends React.Component {
-  state = {
-    descriptors: descriptors
-  };
-  componentDidMount() {
-    console.log(this.state)
-    console.log(this.props)
-  }
+  state = {};
+  componentDidMount() {}
 
   onSubmit = e => {
     e.preventDefault();
@@ -24,17 +19,22 @@ export default class AptitudesForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={Object.assign(
+          { backgroundColor: this.props.bgColor },
+          this.props.styling
+        )}
+      >
         <form>
-          <label>{this.state.descriptors.descriptors.aptitudes.full}</label>
-          {Object.keys(this.state.descriptors.descriptors.aptitudes.values).map(
+          <label>{descriptors.descriptors.aptitudes.full}</label>
+          {Object.keys(descriptors.descriptors.aptitudes.values).map(
             val => {
               return (
                 <div>
                   <label>{val}</label>
                   <select name={val} onChange={e => this.change(e)}>
                     <option value="" />
-                    {this.state.descriptors.descriptors.aptitudes.values[
+                    {descriptors.descriptors.aptitudes.values[
                       val
                     ].options.map(o => {
                       return <option value={val + o}>{o}</option>;
@@ -44,8 +44,13 @@ export default class AptitudesForm extends React.Component {
               );
             }
           )}
-          <button onClick={e => this.onSubmit(e)}>Submit</button>
         </form>
+        <button
+          style={{ position: "absolute", bottom: "0", right: "0" }}
+          onClick={e => this.onSubmit(e)}
+        >
+          Submit
+        </button>
       </div>
     );
   }
