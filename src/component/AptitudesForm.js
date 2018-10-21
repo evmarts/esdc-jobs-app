@@ -2,19 +2,12 @@ import React from "react";
 import descriptors from "../constants/descriptors";
 
 export default class AptitudesForm extends React.Component {
-
   // TODO need to reset state on handlecheck
-  state = {
-    isRange: false
-  };
   constructor(props) {
     super(props);
-    const initialState = { isRange: false };
-    this.state = initialState;
-  }
-
-  reset() {
-    this.setState(this.initialState)
+    this.state = {
+      isRange: false
+    };
   }
 
   componentDidMount() {}
@@ -44,10 +37,11 @@ export default class AptitudesForm extends React.Component {
   };
 
   handleCheck = () => {
-    const tmp = this.state.isRange;
-    this.reset();
     this.setState({
-      isRange: !tmp
+      isRange: !this.state.isRange
+    });
+    Object.keys(this.state).forEach(key => {
+      if (key != "isRange") delete this.state[key];
     });
   };
 

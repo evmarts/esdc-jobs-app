@@ -9,9 +9,15 @@ export default class SearchProfile extends React.Component {
       return <div />;
     } else {
       let profile = this.props.profile;
+      console.log("profile", JSON.stringify(profile));
       return (
         <div>
-          <h2>{Object.keys(profile)}</h2>
+          <h2>Current Profile</h2>
+          {Object.keys(profile).map(char => {
+            return Object.keys(profile[char]).map(val => {
+              return <div>{val + ": " + profile[char][val]}</div>;
+            });
+          })}
         </div>
       );
     }

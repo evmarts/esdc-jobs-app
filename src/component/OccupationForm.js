@@ -16,6 +16,12 @@ export default class OccupationForm extends React.Component {
 
   onSubmit = async (fields, char) => {
     await this.setState({ [char]: fields });
+  };
+
+  handleReset = async characteristic => {
+    console.log('in handle reset')
+    console.log(characteristic);
+    this.state[characteristic] = {};
     console.log(this.state);
   };
 
@@ -37,6 +43,7 @@ export default class OccupationForm extends React.Component {
           bgColor="#f9eaad"
           styling={styling}
           onSubmit={fields => this.onSubmit(fields, "aptitudes")}
+          onReset={() => this.handleReset("aptitudes")}
         />
         <InterestsFrom
           bgColor="#d4e4b7"
@@ -63,7 +70,7 @@ export default class OccupationForm extends React.Component {
           styling={styling}
           onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
         />
-        <SearchProfile profile ={this.state}/>
+        <SearchProfile profile={this.state} />
       </div>
     );
   }
