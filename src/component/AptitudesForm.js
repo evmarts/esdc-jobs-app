@@ -6,7 +6,7 @@ export default class AptitudesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRange: false
+      meta: {isRange: false}
     };
   }
 
@@ -18,7 +18,7 @@ export default class AptitudesForm extends React.Component {
 
   change = e => {
     const value = e.target.value;
-    if (this.state.isRange) {
+    if (this.state.meta.isRange) {
       if (value.indexOf("min") >= 0) {
         this.setState({
           [value.substring(0, 1) + "min"]: value.substring(0, 2)
@@ -38,10 +38,10 @@ export default class AptitudesForm extends React.Component {
 
   handleCheck = () => {
     this.setState({
-      isRange: !this.state.isRange
+      meta: {isRange: !this.state.meta.isRange}
     });
     Object.keys(this.state).forEach(key => {
-      if (key != "isRange") delete this.state[key];
+      if (key != "meta") delete this.state[key];
     });
   };
 
@@ -58,7 +58,7 @@ export default class AptitudesForm extends React.Component {
           <p style={{ display: "inline-block" }}>Filter by range</p>
           <input type="checkbox" onChange={this.handleCheck} />
           {Object.keys(descriptors.descriptors.aptitudes.values).map(val => {
-            if (this.state.isRange) {
+            if (this.state.meta.isRange) {
               return (
                 <div>
                   <label>{val}</label>

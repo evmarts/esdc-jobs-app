@@ -18,13 +18,6 @@ export default class OccupationForm extends React.Component {
     await this.setState({ [char]: fields });
   };
 
-  handleReset = async characteristic => {
-    console.log('in handle reset')
-    console.log(characteristic);
-    this.state[characteristic] = {};
-    console.log(this.state);
-  };
-
   render() {
     const styling = {
       display: "inline-block",
@@ -37,13 +30,14 @@ export default class OccupationForm extends React.Component {
       position: "relative",
       fontSize: "1.75vw"
     };
+    let isProfileViewerShown = true;
+    console.log(isProfileViewerShown);
     return (
       <div>
         <AptitudesForm
           bgColor="#f9eaad"
           styling={styling}
           onSubmit={fields => this.onSubmit(fields, "aptitudes")}
-          onReset={() => this.handleReset("aptitudes")}
         />
         <InterestsFrom
           bgColor="#d4e4b7"
@@ -70,7 +64,6 @@ export default class OccupationForm extends React.Component {
           styling={styling}
           onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
         />
-        <SearchProfile profile={this.state} />
       </div>
     );
   }
