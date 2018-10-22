@@ -12,11 +12,14 @@ export default class OccupationForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { isSubmitted: false };
   }
 
   onSubmit = async (fields, char) => {
-    await this.setState({ [char]: fields });
+    await this.setState({
+      [char]: fields,
+      isSubmitted: true
+    });
   };
 
   render() {
@@ -67,7 +70,11 @@ export default class OccupationForm extends React.Component {
             onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
           />
         </div>
-        <ResultDisplay searchItem = {this.state}/>
+        {this.state.isSubmitted ? (
+          <ResultDisplay searchItem={this.state} />
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
