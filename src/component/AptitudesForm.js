@@ -41,7 +41,7 @@ export default class AptitudesForm extends React.Component {
       meta: {isRange: !this.state.meta.isRange}
     });
     Object.keys(this.state).forEach(key => {
-      if (key != "meta") delete this.state[key];
+      if (key !== "meta") delete this.state[key];
     });
   };
 

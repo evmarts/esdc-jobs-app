@@ -1,13 +1,21 @@
 import React from "react";
 import axios from "axios";
 import ResultInfo from "./ResultInfo";
+import Results from "./Results";
 
 export default class ResultDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
+      selected: ""
     };
+    this.onClick = this.onClick.bind(this);
+  }
+
+  async onClick(job) {
+    await this.setState({ selected: job });
+    console.log(this.state.selected);
   }
 
   async componentDidMount() {
@@ -27,25 +35,39 @@ export default class ResultDisplay extends React.Component {
       aptitudesMin: aptitudesMin,
       aptitudesMax: aptitudesMax
     };
-    const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/jobs",
-      { params }
-    );
+    // const response = await axios.get(
+    //   "http://esdc-jobs-api.herokuapp.com/api/jobs",
+    //   { params }
+    // );
     this.setState({
-      loading: false,
-      jobs: response.data.result,
-      resultCount: response.data.result.length
+      loading: false
+      // jobs: response.data.result,
+      // resultCount: response.data.result.length
     });
   }
   render() {
+    const styling = {
+      display: "inline-block",
+      width: "50%",
+      verticalAlign: "top",
+      marginTight: "10px",
+      marginTop: "0",
+      position: "relative",
+      fontSize: "1.75vw"
+    };
     if (this.state.loading) {
-      // return <div>loading...</div>;
-      return <ResultInfo />;
-    } else {
+      return <div>no results yet</div>;
+    }
+    if (!this.state.loading && this.state.selected === "") {
+      return (
+        <Results styling={styling} onClick={this.onClick} />
+      );
+    }
+    if (!this.state.loading && this.state.selected) {
       return (
         <div>
-          {/* <p>{JSON.stringify(this.state.jobs)}</p> */}
-          <ResultInfo />;
+          <Results styling={styling} onClick={this.onClick} />
+          <ResultInfo styling={styling} />
         </div>
       );
     }

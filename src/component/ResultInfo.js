@@ -156,82 +156,123 @@ export default class ResultInfo extends React.Component {
     workplace_and_employers: "Manufacturing companies"
   };
 
+  clientArgs = {
+    aptitudesMin: "G1",
+    aptitudesMax: "G1",
+    aptitudes: { aptitudes_g_min: 1, aptitudes_g_max: 1 },
+    physical: {},
+    dpt: {}
+  };
+
   render() {
     return (
-      <div>
-        <label>NOC:</label>
-        <p>{this.sampleNoc.sub_noc}</p>
-        <label>Title:</label>
-        <p>{this.sampleNoc.sub_noc_title}</p>
-        <label>Description:</label>
+      <div fontSize = "70"
+        style={Object.assign(
+          { backgroundColor: this.props.bgColor },
+          this.props.styling
+        )}
+      >
+        <h3>
+          {this.sampleNoc.sub_noc
+            .concat(" ")
+            .concat(this.sampleNoc.sub_noc_title)}
+        </h3>
         <p>{this.sampleNoc.sub_noc_description}</p>
+        <hr />
+        <h3>Examples of Job Titles</h3>
         <ul>
           {this.sampleNoc.example_titles.map(title => {
             return <li>{title}</li>;
           })}
         </ul>
-        <label>Profile Summary:</label>
-        <p>Aptitudes:</p>
+        <hr />
+        <hr />
+        <h3>Profile Summary</h3>
+        <hr />
         <ul>
-          {Object.keys(this.sampleNoc.profile_summary.aptitudes).map(key => {
-            return (
-              <div>
-                <p style={{ align: "inline-block" }}>
-                  {this.profileSummaryKeys.aptitudes[key]
-                    .concat(": ")
-                    .concat(this.sampleNoc.profile_summary.aptitudes[key])}
-                </p>
-                <div style={{ align: "inline-block" }} />
-              </div>
-            );
-          })}
+          <h2>APTITUDES:</h2>
+          <ul>
+            {Object.keys(this.sampleNoc.profile_summary.aptitudes).map(key => {
+              return (
+                <div>
+                  <li>
+                    {this.profileSummaryKeys.aptitudes[key]
+                      .concat(": ")
+                      .concat(this.sampleNoc.profile_summary.aptitudes[key])}
+                  </li>
+                  <div />
+                </div>
+              );
+            })}
+          </ul>
+          <hr />
+          <h2>INTERESTS:</h2>
+          <ol>
+            {this.sampleNoc.profile_summary.interests.map(i => {
+              return <li>{i}</li>;
+            })}
+          </ol>
+          <hr />
+          <h2>DATA PEOPLE THINGS (DPT):</h2>
+          <ul>
+            {Object.keys(this.sampleNoc.profile_summary.dpt).map(key => {
+              return (
+                <div>
+                  <li>
+                    {this.profileSummaryKeys.dpt[key]
+                      .concat(": ")
+                      .concat(this.sampleNoc.profile_summary.dpt[key])}
+                  </li>
+                  <div />
+                </div>
+              );
+            })}
+          </ul>
+          <hr />
+          <h2>PHYSICAL ACTIVITIES (PA):</h2>
+          <ul>
+            {Object.keys(this.sampleNoc.profile_summary.physical).map(key => {
+              return (
+                <div>
+                  <li>
+                    {this.profileSummaryKeys.physical[key]
+                      .concat(": ")
+                      .concat(this.sampleNoc.profile_summary.physical[key])}
+                  </li>
+                  <div />
+                </div>
+              );
+            })}
+          </ul>
         </ul>
-        <p>Interests:</p>
-        <ol>
-          {this.sampleNoc.profile_summary.interests.map(i => {
-            return <li>{i}</li>;
-          })}
-        </ol>
-        <p>Data/Information, People, Things:</p>
+        <hr />
+        <h2>ENVIRONMENTAL CONDITIONS (EC):</h2>
         <ul>
-          {Object.keys(this.sampleNoc.profile_summary.dpt).map(key => {
-            return (
-              <div>
-                <p style={{ align: "inline-block" }}>
-                  {this.profileSummaryKeys.dpt[key]
-                    .concat(": ")
-                    .concat(this.sampleNoc.profile_summary.dpt[key])}
-                </p>
-                <div style={{ align: "inline-block" }} />
-              </div>
-            );
-          })}
+          <li>
+            {this.sampleNoc.physical_activities.environment.value
+              .concat(": ")
+              .concat(this.sampleNoc.physical_activities.environment.title)}
+          </li>
         </ul>
-        <p>Physical Activities:</p>
+        <hr />
+        <h2>EDUCATION/TRAINING:</h2>
         <ul>
-          {Object.keys(this.sampleNoc.profile_summary.physical).map(key => {
-            return (
-              <div>
-                <p style={{ align: "inline-block" }}>
-                  {this.profileSummaryKeys.physical[key]
-                    .concat(": ")
-                    .concat(this.sampleNoc.profile_summary.physical[key])}
-                </p>
-                <div style={{ align: "inline-block" }} />
-              </div>
-            );
-          })}
+          <li>{this.sampleNoc.employment_requirements.et_value}</li>
         </ul>
-        <p>Environmental Conditions</p>
-        <div>{this.sampleNoc.physical_activities.environment.title}</div>
-        <p>Employment Requirements</p>
-        <div>{this.sampleNoc.employment_requirements.et_value}</div>
-        <label>Descriptor Profile:</label>
-        <div>
+        <hr />
+        <hr />
+        <h3>Descriptor Profile:</h3>
+        <h2>Main Charactistics</h2>
+        <p>
+          Occupations in this group are characterized by the following
+          aptitudes, interests and worker functions as they relate to main
+          duties:
+        </p>
+        <ul>
           {this.sampleNoc.descriptor_profile.main_characteristics.map(mc => {
-            return <p>{mc}</p>;
+            return <li>{mc.replace(/(<([^>]+)>)/gi, "")}</li>;
           })}
-        </div>
+        </ul>
       </div>
     );
   }

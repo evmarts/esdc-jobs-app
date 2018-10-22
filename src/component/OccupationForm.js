@@ -71,7 +71,10 @@ export default class OccupationForm extends React.Component {
           />
         </div>
         {this.state.isSubmitted ? (
-          <ResultDisplay searchItem={this.state} />
+          <ResultDisplay
+            searchItem={this.state}
+            display="inline-block"
+          />
         ) : (
           <div />
         )}
