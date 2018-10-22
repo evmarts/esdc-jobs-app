@@ -9,7 +9,6 @@ export default class SearchProfile extends React.Component {
       return <div>nothing to show</div>;
     } else {
       let profile = this.state.fields;
-      console.log("profile", JSON.stringify(profile));
       return (
         <div>
           <h3>Profile:</h3>

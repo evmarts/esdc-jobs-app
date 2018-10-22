@@ -15,7 +15,6 @@ export default class ResultDisplay extends React.Component {
 
   async onClick(job) {
     await this.setState({ selected: job });
-    console.log(this.state.selected);
   }
 
   async componentDidMount() {
@@ -29,20 +28,22 @@ export default class ResultDisplay extends React.Component {
     apKeysToSearch.forEach(e => {
       apVals.push(this.props.searchItem.aptitudes[e]);
     });
-    const aptitudesMin = apVals.toString();
-    const aptitudesMax = apVals.toString();
+    // const aptitudesMin = apVals.toString();
+    // const aptitudesMax = apVals.toString();
+    let aptitudesMin = "G3,V3,N4,S4,P4,Q3,K3,F3,M4";
+    let aptitudesMax = "G3,V3,N4,S4,P4,Q3,K3,F3,M4";
     const params = {
       aptitudesMin: aptitudesMin,
       aptitudesMax: aptitudesMax
     };
-    // const response = await axios.get(
-    //   "http://esdc-jobs-api.herokuapp.com/api/jobs",
-    //   { params }
-    // );
+    const response = await axios.get(
+      "http://esdc-jobs-api.herokuapp.com/api/jobs",
+      { params }
+    );
     this.setState({
-      loading: false
-      // jobs: response.data.result,
-      // resultCount: response.data.result.length
+      loading: false,
+      jobs: response.data.result,
+      resultCount: response.data.result.length
     });
   }
   render() {
@@ -56,18 +57,26 @@ export default class ResultDisplay extends React.Component {
       fontSize: "1.75vw"
     };
     if (this.state.loading) {
-      return <div>no results yet</div>;
+      return <div />;
     }
     if (!this.state.loading && this.state.selected === "") {
       return (
-        <Results styling={styling} onClick={this.onClick} />
+        <Results
+          styling={styling}
+          onClick={this.onClick}
+          results={this.state.jobs}
+        />
       );
     }
     if (!this.state.loading && this.state.selected) {
       return (
         <div>
-          <Results styling={styling} onClick={this.onClick} />
-          <ResultInfo styling={styling} />
+          <Results
+            styling={styling}
+            onClick={this.onClick}
+            results={this.state.jobs}
+          />
+          <ResultInfo styling={styling} job={this.state.selected} />
         </div>
       );
     }
