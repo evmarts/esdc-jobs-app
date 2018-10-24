@@ -5,6 +5,7 @@ import SearchTool from "./SearchTool";
 import OccupationForm from "./OccupationForm";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import AptitudesForm from "./AptitudesForm";
+import ResultsV2 from "./ResultsV2"
 
 class App extends Component {
   state = {
@@ -85,6 +86,7 @@ class App extends Component {
         {/* <SearchTool /> */}
         {/* <Form onSubmit={fields => this.onSubmit(fields)} /> */}
         {/* <this.DisplayResult /> */}
+        <ResultsV2/>
       </div>
     );
   }
