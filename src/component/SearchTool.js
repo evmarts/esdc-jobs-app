@@ -15,7 +15,7 @@ class Search extends Component {
     const response = await axios.get("http://localhost:3000/api/search", {
       params
     });
-    const responseArray = response.data.map(r => r.noc_title);
+    const responseArray = response.data.map(r => r.noc + " " + r.noc_title);
     this.setState({
       results: responseArray
     });
@@ -34,6 +34,7 @@ class Search extends Component {
           onChange={this.handleInputChange}
         />
         <div>
+          <ul>
           {this.state.results.map((result, i) => {
             return (
               <div
@@ -47,6 +48,7 @@ class Search extends Component {
               </div>
             );
           })}
+          </ul>
         </div>
       </form>
     );
