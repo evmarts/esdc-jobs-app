@@ -12,7 +12,7 @@ class Search extends Component {
       query: this.search.value
     });
     const params = { searchItem: this.state.query };
-    const response = await axios.get("http://localhost:3000/api/search", {
+    const response = await axios.get("http://esdc-jobs-api.herokuapp.com/api/search", {
       params
     });
     const responseArray = response.data.map(r => r.noc + " " + r.noc_title);
