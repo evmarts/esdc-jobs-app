@@ -5,18 +5,47 @@ export default class NocResult extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { subsVisible: false };
   }
+
+  handleClick = () => {
+    this.setState({ subsVisible: !this.state.subsVisible });
+  };
+
+  SubList = (isVisible, subNocs) => {
+    if (isVisible) {
+      return (
+        <ul>
+          {subNocs.map(sub => {
+            return <SubnocResult subNoc={sub} onClick={this.props.onClick}/>;
+          })}
+        </ul>
+      );
+    } else return <div />;
+  };
 
   render() {
     return (
       <div>
-        {this.props.noc.noc}
-        <ul>
-          {this.props.noc.sub_nocs.map(sub => {
-            return <SubnocResult subNoc={sub} />;
-          })}
-        </ul>
+        <div
+          onClick={this.handleClick}
+          style={
+            this.state.bold
+              ? { textDecoration: "underline" }
+              : { fontWeight: "" }
+          }
+          onMouseOver={() => {
+            this.setState({ bold: true });
+          }}
+          onMouseLeave={() => {
+            this.setState({ bold: false });
+          }}
+        >
+          {this.props.noc.noc + " " + this.props.noc.noc_title}
+        </div>
+        <div>
+          {this.SubList(this.state.subsVisible, this.props.noc.sub_nocs)}
+        </div>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import ResultInfo from "./ResultInfo";
-import Results from "./Results";
+import Results from "./ResultsV2";
 
 export default class ResultDisplay extends React.Component {
   constructor(props) {
@@ -18,26 +18,38 @@ export default class ResultDisplay extends React.Component {
   }
 
   async componentDidMount() {
+    const isApRange = this.props.searchItem.aptitudes.meta.isRange;
     const apKeysToSearch = Object.keys(this.props.searchItem.aptitudes).filter(
       e => {
         return e !== "meta";
       }
     );
 
-    let apVals = [];
-    apKeysToSearch.forEach(e => {
-      apVals.push(this.props.searchItem.aptitudes[e]);
-    });
-    // const aptitudesMin = apVals.toString();
-    // const aptitudesMax = apVals.toString();
-    let aptitudesMin = "G3,V3,N4,S4,P4,Q3,K3,F3,M4";
-    let aptitudesMax = "G3,V3,N4,S4,P4,Q3,K3,F3,M4";
+    let apMinVals = [];
+    let apMaxVals = [];
+    if (isApRange) {
+      apKeysToSearch.forEach(e => {
+        if (e.includes("min")) {
+          apMinVals.push(this.props.searchItem.aptitudes[e]);
+        }
+        if (e.includes("max")) {
+          apMaxVals.push(this.props.searchItem.aptitudes[e]);
+        }
+      });
+    } else {
+      apKeysToSearch.forEach(e => {
+        apMinVals.push(this.props.searchItem.aptitudes[e]);
+        apMaxVals.push(this.props.searchItem.aptitudes[e]);
+      });
+    }
     const params = {
-      aptitudesMin: aptitudesMin,
-      aptitudesMax: aptitudesMax
+      aptitudesMin: apMinVals.toString(),
+      aptitudesMax: apMaxVals.toString()
     };
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/jobs",
+      // "http://esdc-jobs-api.herokuapp.com/api/jobs",
+      // { params }
+      "http://localhost:3000/api/jobs",
       { params }
     );
     this.setState({

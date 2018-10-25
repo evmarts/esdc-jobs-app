@@ -63,14 +63,20 @@ export default class ResultInfo extends React.Component {
         </label>
         <p>{this.props.job.sub_noc_description}</p>
         <hr />
-        <label>Examples of Job Titles</label>
-        <ul>
-          {this.props.job.example_titles.map(title => {
-            return <li>{title}</li>;
-          })}
-        </ul>
-        <hr />
-        <hr />
+        {this.props.job.example_titles ? (
+          <div>
+            <label>Examples of Job Titles</label>
+            <ul>
+              {this.props.job.example_titles.map(title => {
+                return <li>{title}</li>;
+              })}
+            </ul>
+            <hr />
+            <hr />
+          </div>
+        ) : (
+          <div />
+        )}
         <label>Profile Summary</label>
         <hr />
         <ul>
@@ -130,34 +136,54 @@ export default class ResultInfo extends React.Component {
           </ul>
         </ul>
         <hr />
-        <label>ENVIRONMENTAL CONDITIONS (EC):</label>
-        <ul>
-          <li>
-            {this.props.job.physical_activities.environment.value
-              .concat(": ")
-              .concat(this.props.job.physical_activities.environment.title)}
-          </li>
-        </ul>
-        <hr />
-        <label>EDUCATION/TRAINING:</label>
-        <ul>
-          <li>{this.props.job.employment_requirements.et_value}</li>
-        </ul>
-        <hr />
-        <hr />
-        <label>Descriptor Profile:</label>
-        <br />
-        <label>Main Charactistics</label>
-        <p>
-          Occupations in this group are characterized by the following
-          aptitudes, interests and worker functions as they relate to main
-          duties:
-        </p>
-        <ul>
-          {this.props.job.descriptor_profile.main_characteristics.map(mc => {
-            return <li>{mc.replace(/(<([^>]+)>)/gi, "")}</li>;
-          })}
-        </ul>
+        {this.props.job.physical_activities.environment ? (
+          <div>
+            <label>ENVIRONMENTAL CONDITIONS (EC):</label>
+            <ul>
+              <li>
+                {this.props.job.physical_activities.environment.value
+                  .concat(": ")
+                  .concat(this.props.job.physical_activities.environment.title)}
+              </li>
+            </ul>
+            <hr />
+          </div>
+        ) : (
+          <div />
+        )}
+        {this.props.job.employment_requirements ? (
+          <div>
+            <label>EDUCATION/TRAINING:</label>
+            <ul>
+              <li>{this.props.job.employment_requirements.et_value}</li>
+            </ul>
+            <hr />
+            <hr />
+          </div>
+        ) : (
+          <div />
+        )}
+        {this.props.job.descriptor_profile.main_characteristics ? (
+          <div>
+            <label>Descriptor Profile:</label>
+            <br />
+            <label>Main Charactistics</label>
+            <p>
+              Occupations in this group are characterized by the following
+              aptitudes, interests and worker functions as they relate to main
+              duties:
+            </p>
+            <ul>
+              {this.props.job.descriptor_profile.main_characteristics.map(
+                mc => {
+                  return <li>{mc.replace(/(<([^>]+)>)/gi, "")}</li>;
+                }
+              )}
+            </ul>
+          </div>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }

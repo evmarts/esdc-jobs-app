@@ -83,10 +83,6 @@ class App extends Component {
     return (
       <div>
         <this.TopNav />
-        {/* <SearchTool /> */}
-        {/* <Form onSubmit={fields => this.onSubmit(fields)} /> */}
-        {/* <this.DisplayResult /> */}
-        <ResultsV2/>
       </div>
     );
   }

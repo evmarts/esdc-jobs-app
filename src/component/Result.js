@@ -18,11 +18,11 @@ export default class Result extends React.Component {
         onMouseOver={() => {
           this.setState({ bold: true });
         }}
-        onClick={() => this.onSubmit(this.props.result)}
 
         onMouseLeave={() => {
           this.setState({ bold: false });
         }}
+        onClick={() => this.onSubmit(this.props.result)}
       >
         {this.props.result.sub_noc_title}
       </div>
