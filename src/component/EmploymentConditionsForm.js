@@ -2,7 +2,12 @@ import React from "react";
 import descriptors from "../constants/descriptors";
 
 export default class EmploymentConditions extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      meta: {isRange: false}
+    };
+  }
   componentDidMount() {}
 
   onSubmit = e => {
@@ -13,7 +18,7 @@ export default class EmploymentConditions extends React.Component {
   change = e => {
     const value = e.target.value;
     this.setState({
-      [value.split(0, 1)]: value
+      [value.split(0, 1)]: value.substring(1,2)
     });
   };
 
@@ -26,26 +31,24 @@ export default class EmploymentConditions extends React.Component {
         )}
       >
         <form>
-          <label>
-            {descriptors.descriptors.employmentRequirements.full}
-          </label>
-          {Object.keys(
-            descriptors.descriptors.employmentRequirements.values
-          ).map(val => {
-            return (
-              <div>
-                <label>{val}</label>
-                <select name={val} onChange={e => this.change(e)}>
-                  <option value="" />
-                  {descriptors.descriptors.employmentRequirements.values[
-                    val
-                  ].options.map(o => {
-                    return <option value={val + o}>{o}</option>;
-                  })}
-                </select>
-              </div>
-            );
-          })}
+          <label>{descriptors.descriptors.employmentRequirements.full}</label>
+          {Object.keys(descriptors.descriptors.employmentRequirements.values).map(
+            val => {
+              return (
+                <div>
+                  <label>{val}</label>
+                  <select name={val} onChange={e => this.change(e)}>
+                    <option value="" />
+                    {descriptors.descriptors.employmentRequirements.values[
+                      val
+                    ].options.map(o => {
+                      return <option value={val + o}>{o}</option>;
+                    })}
+                  </select>
+                </div>
+              );
+            }
+          )}
         </form>
         <button
           style={{ position: "absolute", bottom: "0", right: "0" }}

@@ -2,7 +2,12 @@ import React from "react";
 import descriptors from "../constants/descriptors";
 
 export default class InterestsForm extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      meta: {isRange: false}
+    };
+  }
   componentDidMount() {}
 
   onSubmit = e => {
@@ -13,7 +18,7 @@ export default class InterestsForm extends React.Component {
   change = e => {
     const value = e.target.value;
     this.setState({
-      [value.split(0, 1)]: value
+      [value.split(0, 1)]: value.substring(1,2)
     });
   };
 

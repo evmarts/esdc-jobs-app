@@ -2,7 +2,6 @@ import React from "react";
 import descriptors from "../constants/descriptors";
 
 export default class AptitudesForm extends React.Component {
-  // TODO need to reset state on handlecheck
   constructor(props) {
     super(props);
     this.state = {
