@@ -155,10 +155,10 @@ export default class ResultDisplay extends React.Component {
       employment_requirements: empReq
     };
     const response = await axios.get(
-      // "http://esdc-jobs-api.herokuapp.com/api/jobs",
-      // { params }
-      "http://localhost:3000/api/jobs",
+      "http://esdc-jobs-api.herokuapp.com/api/jobs",
       { params }
+      // "http://localhost:3000/api/jobs",
+      // { params }
     );
     this.setState({
       loading: false,
@@ -180,6 +180,9 @@ export default class ResultDisplay extends React.Component {
       return <div />;
     }
     if (!this.state.loading && this.state.selected === "") {
+      if (this.state.jobs.length <= 0 ){
+        return (<label>No results matched that search!</label>)
+      }
       return (
         <Results
           styling={styling}

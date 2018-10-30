@@ -17,7 +17,8 @@ export default class OccupationForm extends React.Component {
 
   onSubmit = async (fields, char) => {
     await this.setState({
-      [char]: fields
+      [char]: fields,
+      isSubmitted: false
     });
   };
 
