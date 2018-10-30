@@ -48,6 +48,7 @@ export default class ResultInfo extends React.Component {
   };
 
   render() {
+    console.log("job", this.props.job);
     return (
       <div
         fontSize="70"
@@ -136,26 +137,83 @@ export default class ResultInfo extends React.Component {
           </ul>
         </ul>
         <hr />
-        {this.props.job.physical_activities.environment ? (
+        {this.props.job.environmental_conditions.discomforts.values ||
+        this.props.job.environmental_conditions.location.values ||
+        this.props.job.environmental_conditions.hazards.values ? (
           <div>
-            <label>ENVIRONMENTAL CONDITIONS (EC):</label>
+            <label>ENVIRONMENTAL CONDITIONS:</label>
             <ul>
-              <li>
-                {this.props.job.physical_activities.environment.value
-                  .concat(": ")
-                  .concat(this.props.job.physical_activities.environment.title)}
-              </li>
+              {this.props.job.environmental_conditions.location.values ? (
+                <li>
+                  <div>
+                    {"Location: ".concat(
+                      this.props.job.environmental_conditions.location.values.map(
+                        val => {
+                          return val;
+                        }
+                      )
+                    )}
+                  </div>
+                </li>
+              ) : (
+                <div />
+              )}
+              {this.props.job.environmental_conditions.hazards.values ? (
+                <li>
+                  <div>
+                    {"Hazards: ".concat(
+                      this.props.job.environmental_conditions.hazards.values.map(
+                        val => {
+                          return val;
+                        }
+                      )
+                    )}
+                  </div>
+                </li>
+              ) : (
+                <div />
+              )}
+              {this.props.job.environmental_conditions.discomforts.values ? (
+                <li>
+                  <div>
+                    {"Discomforts: ".concat(
+                      this.props.job.environmental_conditions.discomforts.values.map(
+                        val => {
+                          return val;
+                        }
+                      )
+                    )}
+                  </div>
+                </li>
+              ) : (
+                <div />
+              )}
             </ul>
             <hr />
           </div>
         ) : (
           <div />
         )}
-        {this.props.job.employment_requirements ? (
+        {this.props.job.et_values ? (
           <div>
             <label>EDUCATION/TRAINING:</label>
             <ul>
-              <li>{this.props.job.employment_requirements.et_value}</li>
+              {this.props.job.et_values.map(val => {
+                return <li>{val}</li>;
+              })}
+            </ul>
+            <hr />
+          </div>
+        ) : (
+          <div />
+        )}
+        {this.props.job.workplaces_employers ? (
+          <div>
+            <label>WORKPLACES/EMPLOYERS:</label>
+            <ul>
+              {this.props.job.workplaces_employers.map(val => {
+                return <li>{val}</li>;
+              })}
             </ul>
             <hr />
             <hr />

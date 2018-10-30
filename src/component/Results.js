@@ -12,6 +12,7 @@ export default class Results extends React.Component {
   }
 
   render() {
+    // console.log(this.state)
     return (
       <div style={this.props.styling}>
         {this.state.results ? (

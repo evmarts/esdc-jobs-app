@@ -19,8 +19,6 @@ export default class OccupationForm extends React.Component {
     await this.setState({
       [char]: fields
     });
-
-    console.log('onSub' , this.state);
   };
 
   render() {

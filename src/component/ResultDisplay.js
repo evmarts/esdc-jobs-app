@@ -136,7 +136,6 @@ export default class ResultDisplay extends React.Component {
     if (this.props.searchItem.employmentConditions) {
       empReq = this.props.searchItem.employmentConditions.E;
     }
-    console.log('empReq', empReq);
 
     const params = {
       aptitudesMin: apMinVals ? apMinVals.toString() : undefined,
@@ -155,7 +154,6 @@ export default class ResultDisplay extends React.Component {
       discomforts: disVal,
       employment_requirements: empReq
     };
-    console.log("params", params);
     const response = await axios.get(
       // "http://esdc-jobs-api.herokuapp.com/api/jobs",
       // { params }
