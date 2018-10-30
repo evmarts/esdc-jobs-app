@@ -17,15 +17,14 @@ export default class OccupationForm extends React.Component {
 
   onSubmit = async (fields, char) => {
     await this.setState({
-      [char]: fields,
-      isSubmitted: true
+      [char]: fields
     });
   };
 
   render() {
     const styling = {
       display: "inline-block",
-      width: "16.5%",
+      width: "14%",
       height: "45vw",
       verticalAlign: "top",
       marginTight: "10px",
@@ -35,7 +34,7 @@ export default class OccupationForm extends React.Component {
       fontSize: "1.75vw"
     };
     return (
-      <div>
+      <div>For now you need to refresh the page to do a new search
         <div>
           <AptitudesForm
             bgColor="#f9eaad"
@@ -70,11 +69,16 @@ export default class OccupationForm extends React.Component {
             onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
           />
         </div>
+        <button
+          onClick={() => {
+            console.log('yooo')
+            this.setState({ isSubmitted: true });
+          }}
+        >
+          Search
+        </button>
         {this.state.isSubmitted ? (
-          <ResultDisplay
-            searchItem={this.state}
-            display="inline-block"
-          />
+          <ResultDisplay searchItem={this.state} display="inline-block" />
         ) : (
           <div />
         )}

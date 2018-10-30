@@ -93,12 +93,6 @@ export default class DptForm extends React.Component {
             }
           })}
         </form>
-        <button
-          style={{ position: "absolute", bottom: "0", right: "0" }}
-          onClick={e => this.onSubmit(e)}
-        >
-          Submit
-        </button>
       </div>
     );
   }

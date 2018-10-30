@@ -5,7 +5,7 @@ export default class AptitudesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      meta: {isRange: false}
+      meta: { isRange: false }
     };
   }
 
@@ -15,29 +15,30 @@ export default class AptitudesForm extends React.Component {
     this.props.onSubmit(this.state);
   };
 
-  change = e => {
+  change = async e => {
     const value = e.target.value;
     if (this.state.meta.isRange) {
       if (value.indexOf("min") >= 0) {
-        this.setState({
+        await this.setState({
           [value.substring(0, 1) + "min"]: value.substring(0, 2)
         });
       }
       if (value.indexOf("max") >= 0) {
-        this.setState({
+        await this.setState({
           [value.substring(0, 1) + "max"]: value.substring(0, 2)
         });
       }
     } else {
-      this.setState({
+      await this.setState({
         [value.substring(0, 1)]: value
       });
     }
+    this.props.onSubmit(this.state);
   };
 
   handleCheck = () => {
     this.setState({
-      meta: {isRange: !this.state.meta.isRange}
+      meta: { isRange: !this.state.meta.isRange }
     });
     Object.keys(this.state).forEach(key => {
       if (key !== "meta") delete this.state[key];
@@ -97,12 +98,6 @@ export default class AptitudesForm extends React.Component {
             }
           })}
         </form>
-        <button
-          style={{ position: "absolute", bottom: "0", right: "0" }}
-          onClick={e => this.onSubmit(e)}
-        >
-          Submit
-        </button>
       </div>
     );
   }
