@@ -116,53 +116,27 @@ export default class ResultDisplay extends React.Component {
         });
       }
     }
-    // env conditions
-    let environmentalConditionsMinVals = [],
-      environmentalConditionsMaxVals = [];
+
+    let locVal = "";
+    let hazVal = "";
+    let disVal = "";
     if (this.props.searchItem.environmentalConditions) {
-      const isApRange = this.props.searchItem.environmentalConditions.meta
-        .isRange;
-      const environmentalConditionsKeysToSearch = Object.keys(
-        this.props.searchItem.environmentalConditions
-      ).filter(e => {
-        return e !== "meta";
-      });
-      if (isApRange) {
-        environmentalConditionsKeysToSearch.forEach(e => {
-          if (e.includes("min")) {
-            environmentalConditionsMinVals.push(
-              this.props.searchItem.environmentalConditions[e]
-            );
-          }
-          if (e.includes("max")) {
-            environmentalConditionsMaxVals.push(
-              this.props.searchItem.environmentalConditions[e]
-            );
-          }
-        });
-      } else {
-        environmentalConditionsKeysToSearch.forEach(e => {
-          environmentalConditionsMinVals.push(
-            this.props.searchItem.environmentalConditions[e]
-          );
-          environmentalConditionsMaxVals.push(
-            this.props.searchItem.environmentalConditions[e]
-          );
-        });
+      if (this.props.searchItem.environmentalConditions.L) {
+        locVal = this.props.searchItem.environmentalConditions.L;
+      }
+      if (this.props.searchItem.environmentalConditions.L) {
+        hazVal = this.props.searchItem.environmentalConditions.H;
+      }
+      if (this.props.searchItem.environmentalConditions.L) {
+        disVal = this.props.searchItem.environmentalConditions.D;
       }
     }
-    // emp reqs
-    let empReqsVals = [];
-    if (this.props.searchItem.employmentRequirements) {
-      const inKeysToSearch = Object.keys(
-        this.props.searchItem.employmentRequirements
-      ).filter(e => {
-        return e !== "meta";
-      });
-      inKeysToSearch.forEach(e => {
-        empReqsVals.push(this.props.searchItem.employmentRequirements[e]);
-      });
+
+    let empReq = "";
+    if (this.props.searchItem.employmentConditions) {
+      empReq = this.props.searchItem.employmentConditions.E;
     }
+    console.log('empReq', empReq);
 
     const params = {
       aptitudesMin: apMinVals ? apMinVals.toString() : undefined,
@@ -176,15 +150,12 @@ export default class ResultDisplay extends React.Component {
       physicalMax: physicalActivitiesMaxVals
         ? physicalActivitiesMaxVals.toString()
         : undefined,
-      environmentMin: environmentalConditionsMinVals
-        ? environmentalConditionsMinVals.toString
-        : undefined,
-      environmentMax: environmentalConditionsMaxVals // TODO currently does nothing
-        ? environmentalConditionsMaxVals.toString
-        : undefined,
-      empReqs: empReqsVals ? empReqsVals.toString() : "", // TODO currently does nothing
+      location: locVal,
+      hazards: hazVal,
+      discomforts: disVal,
+      employment_requirements: empReq
     };
-    console.log(params);
+    console.log("params", params);
     const response = await axios.get(
       // "http://esdc-jobs-api.herokuapp.com/api/jobs",
       // { params }

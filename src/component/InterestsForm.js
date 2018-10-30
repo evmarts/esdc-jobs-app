@@ -4,9 +4,6 @@ import descriptors from "../constants/descriptors";
 export default class InterestsForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      meta: {isRange: false}
-    };
   }
   componentDidMount() {}
 
@@ -15,11 +12,12 @@ export default class InterestsForm extends React.Component {
     this.props.onSubmit(this.state);
   };
 
-  change = e => {
+  change = async e => {
     const value = e.target.value;
-    this.setState({
-      [value.split(0, 1)]: value.substring(1,2)
+    await this.setState({
+      [value.split(0, 1)]: value.substring(1, 2)
     });
+    this.props.onSubmit(this.state);
   };
 
   render() {
@@ -32,23 +30,21 @@ export default class InterestsForm extends React.Component {
       >
         <form>
           <label>{descriptors.descriptors.interests.full}</label>
-          {Object.keys(descriptors.descriptors.interests.values).map(
-            val => {
-              return (
-                <div>
-                  <label>{val}</label>
-                  <select name={val} onChange={e => this.change(e)}>
-                    <option value="" />
-                    {descriptors.descriptors.interests.values[
-                      val
-                    ].options.map(o => {
+          {Object.keys(descriptors.descriptors.interests.values).map(val => {
+            return (
+              <div>
+                <label>{val}</label>
+                <select name={val} onChange={e => this.change(e)}>
+                  <option value="" />
+                  {descriptors.descriptors.interests.values[val].options.map(
+                    o => {
                       return <option value={val + o}>{o}</option>;
-                    })}
-                  </select>
-                </div>
-              );
-            }
-          )}
+                    }
+                  )}
+                </select>
+              </div>
+            );
+          })}
         </form>
       </div>
     );

@@ -15,24 +15,25 @@ export default class DptForm extends React.Component {
     this.props.onSubmit(this.state);
   };
 
-  change = e => {
+  change = async e => {
     const value = e.target.value;
     if (this.state.meta.isRange) {
       if (value.indexOf("min") >= 0) {
-        this.setState({
+        await this.setState({
           [value.substring(0, 1) + "min"]: value.substring(0, 2)
         });
       }
       if (value.indexOf("max") >= 0) {
-        this.setState({
+        await this.setState({
           [value.substring(0, 1) + "max"]: value.substring(0, 2)
         });
       }
     } else {
-      this.setState({
+      await this.setState({
         [value.substring(0, 1)]: value
       });
     }
+    this.props.onSubmit(this.state);
   };
 
   handleCheck = () => {

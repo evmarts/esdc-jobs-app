@@ -19,6 +19,8 @@ export default class OccupationForm extends React.Component {
     await this.setState({
       [char]: fields
     });
+
+    console.log('onSub' , this.state);
   };
 
   render() {
@@ -71,7 +73,6 @@ export default class OccupationForm extends React.Component {
         </div>
         <button
           onClick={() => {
-            console.log('yooo')
             this.setState({ isSubmitted: true });
           }}
         >
