@@ -180,8 +180,8 @@ export default class ResultDisplay extends React.Component {
       return <div />;
     }
     if (!this.state.loading && this.state.selected === "") {
-      if (this.state.jobs.length <= 0 ){
-        return (<label>No results matched that search!</label>)
+      if (this.state.jobs.length <= 0) {
+        return <label>No results matched that search!</label>;
       }
       return (
         <Results
