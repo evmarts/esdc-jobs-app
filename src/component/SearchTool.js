@@ -16,7 +16,7 @@ class Search extends Component {
     const response = await axios.get("http://esdc-jobs-api.herokuapp.com/api/search", {
       params
     });
-    const responseArray = response.data.map(r => r.noc + " " + r.noc_title);
+    const responseArray = response.data.map(r => r.sub_noc + " " + r.ch_title);
     this.setState({
       results: responseArray
     });
