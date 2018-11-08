@@ -7,6 +7,10 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import AptitudesForm from "./AptitudesForm";
 import ResultsV2 from "./ResultsV2"
 
+// TODO 
+// added clickable results to search tab
+// move submit button on form tab
+// fix form so that we don't need to refresh page to do a new search
 class App extends Component {
   state = {
     response: "",
