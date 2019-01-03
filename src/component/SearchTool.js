@@ -13,9 +13,12 @@ class Search extends Component {
     });
     const params = { searchItem: this.state.query };
     // const response = await axios.get("http://localhost/api/search", {
-    const response = await axios.get("http://esdc-jobs-api.herokuapp.com/api/search", {
-      params
-    });
+    const response = await axios.get(
+      "http://esdc-jobs-api.herokuapp.com/api/search",
+      {
+        params
+      }
+    );
     const responseArray = response.data.map(r => r.sub_noc + " " + r.ch_title);
     this.setState({
       results: responseArray
@@ -24,31 +27,40 @@ class Search extends Component {
 
   handleResultClick = async (i, result) => {
     // make a call to the DB for this noc (the results should include a sub_noc/noc)
-  }
+  };
 
   render() {
     return (
       <form>
-        <input
-          placeholder="Search for..."
-          ref={input => (this.search = input)}
-          onChange={this.handleInputChange}
-        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <input
+            style={{ width: "400px" }}
+            placeholder="Search for occupations..."
+            ref={input => (this.search = input)}
+            onChange={this.handleInputChange}
+          />
+        </div>
         <div>
           <ul>
-          {this.state.results.map((result, i) => {
-            return (
-              <div
-                className={"row"}
-                key={i}
-                onClick={() => {
-                  this.handleResultClick(i, result);
-                }}
-              >
-                {result}
-              </div>
-            );
-          })}
+            {this.state.results.map((result, i) => {
+              return (
+                <div
+                  className={"row"}
+                  key={i}
+                  onClick={() => {
+                    this.handleResultClick(i, result);
+                  }}
+                >
+                  {result}
+                </div>
+              );
+            })}
           </ul>
         </div>
       </form>
