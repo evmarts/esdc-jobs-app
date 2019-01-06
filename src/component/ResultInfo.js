@@ -48,7 +48,8 @@ export default class ResultInfo extends React.Component {
   };
 
   render() {
-    console.log("job", this.props.job);
+    console.log("props!!!!", this.props);
+    console.log("jobs!!!!!", this.props.job)
     return (
       <div
         fontSize="70"

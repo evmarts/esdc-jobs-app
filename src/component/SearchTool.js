@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchResult from "./SearchResult";
 import axios from "axios";
+import ResultInfo from "./ResultInfo";
 
 class Search extends Component {
   state = {
@@ -9,15 +10,6 @@ class Search extends Component {
     hasClicked: false,
     clicked: ""
   };
-
-  async componentDidMount() {
-    const params = {
-      searchItem: this.state.clicked
-    };
-    const response = await axios.get("http://localhost:3000/api/noc", {
-      params
-    });
-  }
 
   handleInputChange = async () => {
     await this.setState({
@@ -37,14 +29,34 @@ class Search extends Component {
     });
   };
 
-  handleResultClick = async (i, result) => {
+  handleResultClick = async (result, i) => {
     // make a call to the DB for this noc (the results should include a sub_noc/noc)
-    this.setState({ hasClicked: true });
-    console.log("hey", result, i);
+    console.log("index", i);
+    console.log("result", result);
+    await this.setState({ hasClicked: true, clicked: result.split(" ")[0] });
+
+    console.log("clicked", this.state.clicked);
+    const params = {
+      searchItem: this.state.clicked
+    };
+    const response = await axios.get("http://localhost:3000/api/noc", {
+      params
+    });
+    await this.setState({ response: response });
+    console.log("heeree", this.state.response);
   };
 
   render() {
-    if (!this.state.hasClicked) {
+    const styling = {
+      display: "inline-block",
+      width: "50%",
+      verticalAlign: "top",
+      marginTight: "10px",
+      marginTop: "0",
+      position: "relative",
+      fontSize: "1.75vw"
+    };
+    if (!this.state.response) {
       return (
         <form>
           <div
@@ -67,6 +79,7 @@ class Search extends Component {
                 return (
                   <SearchResult
                     result={result}
+                    index={i}
                     onClick={this.handleResultClick}
                   />
                 );
@@ -76,7 +89,11 @@ class Search extends Component {
         </form>
       );
     } else {
-      return <div>clicked!</div>;
+      return (
+        <div>
+          <ResultInfo styling={styling} job={this.state.response.data[0].sub_nocs[0]} />
+        </div>
+      );
     }
   }
 }
