@@ -39,7 +39,7 @@ class Search extends Component {
     const params = {
       searchItem: this.state.clicked
     };
-    const response = await axios.get("http://localhost:3000/api/noc", {
+    const response = await axios.get("http://esdc-jobs-api.herokuapp.com/api/noc", {
       params
     });
     await this.setState({ response: response });
