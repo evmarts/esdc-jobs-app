@@ -22,14 +22,10 @@ export default class InterestsForm extends React.Component {
 
   render() {
     return (
-      <div
-        style={Object.assign(
-          { backgroundColor: this.props.bgColor },
-          this.props.styling
-        )}
-      >
+      <div style={this.props.styling}>
         <form>
-          <label>{descriptors.descriptors.interests.full}</label>
+        <h3>{descriptors.descriptors.interests.full}</h3>
+          <br />
           {Object.keys(descriptors.descriptors.interests.values).map(val => {
             return (
               <div>

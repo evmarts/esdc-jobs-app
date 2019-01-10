@@ -47,14 +47,11 @@ export default class DptForm extends React.Component {
 
   render() {
     return (
-      <div
-        style={Object.assign(
-          { backgroundColor: this.props.bgColor },
-          this.props.styling
-        )}
-      >
+      <div style={this.props.styling}>
         <form>
-          <label>{descriptors.descriptors.dpt.full}</label>
+          <h3>{descriptors.descriptors.dpt.full}</h3>
+          <br />
+
           <p style={{ display: "inline-block" }}>Filter by range</p>
           <input type="checkbox" onChange={this.handleCheck} />
           {Object.keys(descriptors.descriptors.dpt.values).map(val => {
@@ -64,11 +61,9 @@ export default class DptForm extends React.Component {
                   <label>{val}</label>
                   <select name={val + "min"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.dpt.values[val].options.map(
-                      o => {
-                        return <option value={val + o + "min"}>{o}</option>;
-                      }
-                    )}
+                    {descriptors.descriptors.dpt.values[val].options.map(o => {
+                      return <option value={val + o + "min"}>{o}</option>;
+                    })}
                   </select>
                   -
                   <select name={val + "max"} onChange={e => this.change(e)}>

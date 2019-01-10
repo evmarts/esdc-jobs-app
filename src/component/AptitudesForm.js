@@ -48,14 +48,12 @@ export default class AptitudesForm extends React.Component {
   render() {
     return (
       <div
-        style={Object.assign(
-          { backgroundColor: this.props.bgColor },
-          this.props.styling
-        )}
+        style={this.props.styling}
       >
         <form>
-          <label>{descriptors.descriptors.aptitudes.full}</label>
-          <p style={{ display: "inline-block" }}>Filter by range</p>
+          <h3>{descriptors.descriptors.aptitudes.full}</h3>
+          <br></br>
+          <p style={{ display: "inline-block" }}>range</p>
           <input type="checkbox" onChange={this.handleCheck} />
           {Object.keys(descriptors.descriptors.aptitudes.values).map(val => {
             if (this.state.meta.isRange) {

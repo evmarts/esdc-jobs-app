@@ -5,10 +5,10 @@ export default class PhysicalActivitiesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      meta: {isRange: false}
+      meta: { isRange: false }
     };
-  } 
-   componentDidMount() {}
+  }
+  componentDidMount() {}
 
   onSubmit = e => {
     e.preventDefault();
@@ -38,66 +38,63 @@ export default class PhysicalActivitiesForm extends React.Component {
 
   handleCheck = () => {
     this.setState({
-      meta: {isRange: !this.state.meta.isRange}
+      meta: { isRange: !this.state.meta.isRange }
     });
     Object.keys(this.state).forEach(key => {
       if (key !== "meta") delete this.state[key];
     });
   };
 
-
   render() {
     return (
-      <div
-        style={Object.assign(
-          { backgroundColor: this.props.bgColor },
-          this.props.styling
-        )}
-      >
+      <div style={this.props.styling}>
         <form>
-          <label>{descriptors.descriptors.physicalActivities.full}</label>
+          <h3>{descriptors.descriptors.physicalActivities.full}</h3>
+          <br />
           <p style={{ display: "inline-block" }}>Filter by range</p>
           <input type="checkbox" onChange={this.handleCheck} />
-          {Object.keys(descriptors.descriptors.physicalActivities.values).map(val => {
-            if (this.state.meta.isRange) {
-              return (
-                <div>
-                  <label>{val}</label>
-                  <select name={val + "min"} onChange={e => this.change(e)}>
-                    <option value="" />
-                    {descriptors.descriptors.physicalActivities.values[val].options.map(
-                      o => {
+          {Object.keys(descriptors.descriptors.physicalActivities.values).map(
+            val => {
+              if (this.state.meta.isRange) {
+                return (
+                  <div>
+                    <label>{val}</label>
+                    <select name={val + "min"} onChange={e => this.change(e)}>
+                      <option value="" />
+                      {descriptors.descriptors.physicalActivities.values[
+                        val
+                      ].options.map(o => {
                         return <option value={val + o + "min"}>{o}</option>;
-                      }
-                    )}
-                  </select>
-                  -
-                  <select name={val + "max"} onChange={e => this.change(e)}>
-                    <option value="" />
-                    {descriptors.descriptors.physicalActivities.values[val].options.map(
-                      o => {
+                      })}
+                    </select>
+                    -
+                    <select name={val + "max"} onChange={e => this.change(e)}>
+                      <option value="" />
+                      {descriptors.descriptors.physicalActivities.values[
+                        val
+                      ].options.map(o => {
                         return <option value={val + o + "max"}>{o}</option>;
-                      }
-                    )}
-                  </select>
-                </div>
-              );
-            } else {
-              return (
-                <div>
-                  <label>{val}</label>
-                  <select name={val} onChange={e => this.change(e)}>
-                    <option value="" />
-                    {descriptors.descriptors.physicalActivities.values[val].options.map(
-                      o => {
+                      })}
+                    </select>
+                  </div>
+                );
+              } else {
+                return (
+                  <div>
+                    <label>{val}</label>
+                    <select name={val} onChange={e => this.change(e)}>
+                      <option value="" />
+                      {descriptors.descriptors.physicalActivities.values[
+                        val
+                      ].options.map(o => {
                         return <option value={val + o}>{o}</option>;
-                      }
-                    )}
-                  </select>
-                </div>
-              );
+                      })}
+                    </select>
+                  </div>
+                );
+              }
             }
-          })}
+          )}
         </form>
       </div>
     );

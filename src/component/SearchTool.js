@@ -34,6 +34,20 @@ class Search extends Component {
     this.setState({ response: null });
   };
 
+  Information = () => {
+    return (
+      <div>
+        <h3>How to use:</h3>
+        <p>
+          Enter the name of an occupation within the National Occupational
+          Classification (NOC) system in the search bar below. Results matching
+          the search will show up below the search bar. Click a result to view
+          information corresponding to that occupation.
+        </p>
+      </div>
+    );
+  };
+
   handleResultClick = async (result, i) => {
     // make a call to the DB for this noc (the results should include a sub_noc/noc)
     console.log("index", i);
@@ -68,14 +82,7 @@ class Search extends Component {
       return (
         <form>
           <div style={{ marginLeft: "70px", marginRight: "70px" }}>
-            <h3>How to use:</h3>
-            <p>
-              Enter the name of an occupation within the National Occupational
-              Classification (NOC) system in the search bar below. Results matching the search will show
-              up below the search bar. By clicking a result, the information for
-              that occupation will be shown.
-            </p>
-            <h3>Search:</h3>
+            <this.Information />
             <input
               style={{ width: "400px" }}
               placeholder="Search for occupations..."
@@ -101,8 +108,12 @@ class Search extends Component {
     } else {
       return (
         <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+          <this.Information />
           <button onClick={this.handleNewSearch}>new search</button>
           <br />
+          <br />
+          <br />
+          <p>search result:</p>
           <ResultInfo job={this.state.response.data[0].sub_nocs[0]} />
         </div>
       );

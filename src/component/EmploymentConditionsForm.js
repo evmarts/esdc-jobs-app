@@ -25,14 +25,10 @@ export default class EmploymentConditions extends React.Component {
 
   render() {
     return (
-      <div
-        style={Object.assign(
-          { backgroundColor: this.props.bgColor },
-          this.props.styling
-        )}
-      >
+      <div style={this.props.styling}>
         <form>
-          <label>{descriptors.descriptors.employmentRequirements.full}</label>
+          <h3>{descriptors.descriptors.employmentRequirements.full}</h3>
+          <br />
           {Object.keys(
             descriptors.descriptors.employmentRequirements.values
           ).map(val => {

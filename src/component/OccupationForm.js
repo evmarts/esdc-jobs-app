@@ -39,36 +39,30 @@ export default class OccupationForm extends React.Component {
     
     return (
       <div>
-        <div>
+        <div style={{marginLeft:"70px"}}>
           <AptitudesForm
-            bgColor="#f9eaad"
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "aptitudes")}
           />{" "}
           <InterestsFrom
-            bgColor="#d4e4b7"
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "interests")}
           />{" "}
           <DptForm
-            bgColor="#b7e4d1"
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "dpt")}
           />{" "}
           <PhysicalActvitiesForm
-            bgColor="#b7cee4"
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "physicalActivities")}
           />{" "}
           <EnvironmentalConditionsForm
-            bgColor="#e4b6c5"
             styling={styling}
             onSubmit={fields =>
               this.onSubmit(fields, "environmentalConditions")
             }
           />{" "}
           <EmploymentConditionsForm
-            bgColor="#f0c8c1"
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
           />{" "}

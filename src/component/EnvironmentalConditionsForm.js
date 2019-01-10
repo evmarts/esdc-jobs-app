@@ -25,14 +25,10 @@ export default class EnvironmentalConditionsForm extends React.Component {
 
   render() {
     return (
-      <div
-        style={Object.assign(
-          { backgroundColor: this.props.bgColor },
-          this.props.styling
-        )}
-      >
+      <div style={this.props.styling}>
         <form>
-          <label>{descriptors.descriptors.environmentalConditions.full}</label>
+          <h3>{descriptors.descriptors.environmentalConditions.full}</h3>
+          <br />
           {Object.keys(
             descriptors.descriptors.environmentalConditions.values
           ).map(val => {
