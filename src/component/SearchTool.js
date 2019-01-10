@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchResult from "./SearchResult";
 import axios from "axios";
 import ResultInfo from "./ResultInfo";
+import Frame from "react-frame-component";
 
 class Search extends Component {
   state = {
@@ -29,6 +30,10 @@ class Search extends Component {
     });
   };
 
+  handleNewSearch = async () => {
+    this.setState({ response: null });
+  };
+
   handleResultClick = async (result, i) => {
     // make a call to the DB for this noc (the results should include a sub_noc/noc)
     console.log("index", i);
@@ -39,9 +44,12 @@ class Search extends Component {
     const params = {
       searchItem: this.state.clicked
     };
-    const response = await axios.get("http://esdc-jobs-api.herokuapp.com/api/noc", {
-      params
-    });
+    const response = await axios.get(
+      "http://esdc-jobs-api.herokuapp.com/api/noc",
+      {
+        params
+      }
+    );
     await this.setState({ response: response });
     console.log("heeree", this.state.response);
   };
@@ -59,13 +67,15 @@ class Search extends Component {
     if (!this.state.response) {
       return (
         <form>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
+          <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+            <h3>How to use:</h3>
+            <p>
+              Enter the name of an occupation within the National Occupational
+              Classification (NOC) system in the search bar below. Results matching the search will show
+              up below the search bar. By clicking a result, the information for
+              that occupation will be shown.
+            </p>
+            <h3>Search:</h3>
             <input
               style={{ width: "400px" }}
               placeholder="Search for occupations..."
@@ -73,7 +83,7 @@ class Search extends Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
+          <div style={{ marginLeft: "70px", marginRight: "70px" }}>
             <ul>
               {this.state.results.map((result, i) => {
                 return (
@@ -90,8 +100,10 @@ class Search extends Component {
       );
     } else {
       return (
-        <div>
-          <ResultInfo styling={styling} job={this.state.response.data[0].sub_nocs[0]} />
+        <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+          <button onClick={this.handleNewSearch}>new search</button>
+          <br />
+          <ResultInfo job={this.state.response.data[0].sub_nocs[0]} />
         </div>
       );
     }

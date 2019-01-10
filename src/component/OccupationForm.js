@@ -36,10 +36,9 @@ export default class OccupationForm extends React.Component {
       position: "relative",
       fontSize: "1.75vw"
     };
+    
     return (
       <div>
-        {" "}
-        For now you need to refresh the page to do a new search{" "}
         <div>
           <AptitudesForm
             bgColor="#f9eaad"
