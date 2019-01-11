@@ -1,5 +1,6 @@
 import React from "react";
 import descriptors from "../constants/descriptors";
+import Frame from "react-frame-component";
 
 export default class ResultInfo extends React.Component {
   constructor(props) {
@@ -48,8 +49,6 @@ export default class ResultInfo extends React.Component {
   };
 
   render() {
-    console.log("props!!!!", this.props);
-    console.log("jobs!!!!!", this.props.job)
     return (
       <div
         fontSize="70"
@@ -58,191 +57,206 @@ export default class ResultInfo extends React.Component {
           this.props.styling
         )}
       >
-        <label>
-          {this.props.job.sub_noc
-            .concat(" ")
-            .concat(this.props.job.sub_noc_title)}
-        </label>
-        <p>{this.props.job.sub_noc_description}</p>
-        <hr />
-        {this.props.job.example_titles ? (
-          <div>
-            <label>Examples of Job Titles</label>
-            <ul>
-              {this.props.job.example_titles.map(title => {
-                return <li>{title}</li>;
-              })}
-            </ul>
-            <hr />
-            <hr />
-          </div>
-        ) : (
-          <div />
-        )}
-        <label>Profile Summary</label>
-        <hr />
-        <ul>
-          <label>APTITUDES:</label>
-          <ul>
-            {Object.keys(this.props.job.profile_summary.aptitudes).map(key => {
-              return (
-                <div>
-                  <li>
-                    {this.profileSummaryKeys.aptitudes[key]
-                      .concat(": ")
-                      .concat(this.props.job.profile_summary.aptitudes[key])}
-                  </li>
-                  <div />
-                </div>
-              );
-            })}
-          </ul>
+        <Frame
+          style={Object.assign(
+            {
+              backgroundColor: this.props.bgColor,
+              width: "160vh",
+              height: "100vh"
+            },
+            this.props.styling
+          )}
+        >
+          <label>
+            {this.props.job.sub_noc
+              .concat(" ")
+              .concat(this.props.job.sub_noc_title)}
+          </label>
+          <p>{this.props.job.sub_noc_description}</p>
           <hr />
-          <label>INTERESTS:</label>
-          <ol>
-            {this.props.job.profile_summary.interests.map(i => {
-              return <li>{i}</li>;
-            })}
-          </ol>
+          {this.props.job.example_titles ? (
+            <div>
+              <label>Examples of Job Titles</label>
+              <ul>
+                {this.props.job.example_titles.map(title => {
+                  return <li>{title}</li>;
+                })}
+              </ul>
+              <hr />
+              <hr />
+            </div>
+          ) : (
+            <div />
+          )}
+          <label>Profile Summary</label>
           <hr />
-          <label>DATA PEOPLE THINGS (DPT):</label>
           <ul>
-            {Object.keys(this.props.job.profile_summary.dpt).map(key => {
-              return (
-                <div>
-                  <li>
-                    {this.profileSummaryKeys.dpt[key]
-                      .concat(": ")
-                      .concat(this.props.job.profile_summary.dpt[key])}
-                  </li>
-                  <div />
-                </div>
-              );
-            })}
-          </ul>
-          <hr />
-          <label>PHYSICAL ACTIVITIES (PA):</label>
-          <ul>
-            {Object.keys(this.props.job.profile_summary.physical).map(key => {
-              return (
-                <div>
-                  <li>
-                    {this.profileSummaryKeys.physical[key]
-                      .concat(": ")
-                      .concat(this.props.job.profile_summary.physical[key])}
-                  </li>
-                  <div />
-                </div>
-              );
-            })}
-          </ul>
-        </ul>
-        <hr />
-        {this.props.job.environmental_conditions.discomforts.values ||
-        this.props.job.environmental_conditions.location.values ||
-        this.props.job.environmental_conditions.hazards.values ? (
-          <div>
-            <label>ENVIRONMENTAL CONDITIONS:</label>
+            <label>APTITUDES:</label>
             <ul>
-              {this.props.job.environmental_conditions.location.values ? (
-                <li>
-                  <div>
-                    {"Location: ".concat(
-                      this.props.job.environmental_conditions.location.values.map(
-                        val => {
-                          return val;
-                        }
-                      )
-                    )}
-                  </div>
-                </li>
-              ) : (
-                <div />
-              )}
-              {this.props.job.environmental_conditions.hazards.values ? (
-                <li>
-                  <div>
-                    {"Hazards: ".concat(
-                      this.props.job.environmental_conditions.hazards.values.map(
-                        val => {
-                          return val;
-                        }
-                      )
-                    )}
-                  </div>
-                </li>
-              ) : (
-                <div />
-              )}
-              {this.props.job.environmental_conditions.discomforts.values ? (
-                <li>
-                  <div>
-                    {"Discomforts: ".concat(
-                      this.props.job.environmental_conditions.discomforts.values.map(
-                        val => {
-                          return val;
-                        }
-                      )
-                    )}
-                  </div>
-                </li>
-              ) : (
-                <div />
-              )}
-            </ul>
-            <hr />
-          </div>
-        ) : (
-          <div />
-        )}
-        {this.props.job.et_values ? (
-          <div>
-            <label>EDUCATION/TRAINING:</label>
-            <ul>
-              {this.props.job.et_values.map(val => {
-                return <li>{val}</li>;
-              })}
-            </ul>
-            <hr />
-          </div>
-        ) : (
-          <div />
-        )}
-        {this.props.job.workplaces_employers ? (
-          <div>
-            <label>WORKPLACES/EMPLOYERS:</label>
-            <ul>
-              {this.props.job.workplaces_employers.map(val => {
-                return <li>{val}</li>;
-              })}
-            </ul>
-            <hr />
-            <hr />
-          </div>
-        ) : (
-          <div />
-        )}
-        {this.props.job.descriptor_profile.main_characteristics ? (
-          <div>
-            <label>Descriptor Profile:</label>
-            <br />
-            <label>Main Charactistics</label>
-            <p>
-              Occupations in this group are characterized by the following
-              aptitudes, interests and worker functions as they relate to main
-              duties:
-            </p>
-            <ul>
-              {this.props.job.descriptor_profile.main_characteristics.map(
-                mc => {
-                  return <li>{mc.replace(/(<([^>]+)>)/gi, "")}</li>;
+              {Object.keys(this.props.job.profile_summary.aptitudes).map(
+                key => {
+                  return (
+                    <div>
+                      <li>
+                        {this.profileSummaryKeys.aptitudes[key]
+                          .concat(": ")
+                          .concat(
+                            this.props.job.profile_summary.aptitudes[key]
+                          )}
+                      </li>
+                      <div />
+                    </div>
+                  );
                 }
               )}
             </ul>
-          </div>
-        ) : (
-          <div />
-        )}
+            <hr />
+            <label>INTERESTS:</label>
+            <ol>
+              {this.props.job.profile_summary.interests.map(i => {
+                return <li>{i}</li>;
+              })}
+            </ol>
+            <hr />
+            <label>DATA PEOPLE THINGS (DPT):</label>
+            <ul>
+              {Object.keys(this.props.job.profile_summary.dpt).map(key => {
+                return (
+                  <div>
+                    <li>
+                      {this.profileSummaryKeys.dpt[key]
+                        .concat(": ")
+                        .concat(this.props.job.profile_summary.dpt[key])}
+                    </li>
+                    <div />
+                  </div>
+                );
+              })}
+            </ul>
+            <hr />
+            <label>PHYSICAL ACTIVITIES (PA):</label>
+            <ul>
+              {Object.keys(this.props.job.profile_summary.physical).map(key => {
+                return (
+                  <div>
+                    <li>
+                      {this.profileSummaryKeys.physical[key]
+                        .concat(": ")
+                        .concat(this.props.job.profile_summary.physical[key])}
+                    </li>
+                    <div />
+                  </div>
+                );
+              })}
+            </ul>
+          </ul>
+          <hr />
+          {this.props.job.environmental_conditions.discomforts.values ||
+          this.props.job.environmental_conditions.location.values ||
+          this.props.job.environmental_conditions.hazards.values ? (
+            <div>
+              <label>ENVIRONMENTAL CONDITIONS:</label>
+              <ul>
+                {this.props.job.environmental_conditions.location.values ? (
+                  <li>
+                    <div>
+                      {"Location: ".concat(
+                        this.props.job.environmental_conditions.location.values.map(
+                          val => {
+                            return val;
+                          }
+                        )
+                      )}
+                    </div>
+                  </li>
+                ) : (
+                  <div />
+                )}
+                {this.props.job.environmental_conditions.hazards.values ? (
+                  <li>
+                    <div>
+                      {"Hazards: ".concat(
+                        this.props.job.environmental_conditions.hazards.values.map(
+                          val => {
+                            return val;
+                          }
+                        )
+                      )}
+                    </div>
+                  </li>
+                ) : (
+                  <div />
+                )}
+                {this.props.job.environmental_conditions.discomforts.values ? (
+                  <li>
+                    <div>
+                      {"Discomforts: ".concat(
+                        this.props.job.environmental_conditions.discomforts.values.map(
+                          val => {
+                            return val;
+                          }
+                        )
+                      )}
+                    </div>
+                  </li>
+                ) : (
+                  <div />
+                )}
+              </ul>
+              <hr />
+            </div>
+          ) : (
+            <div />
+          )}
+          {this.props.job.et_values ? (
+            <div>
+              <label>EDUCATION/TRAINING:</label>
+              <ul>
+                {this.props.job.et_values.map(val => {
+                  return <li>{val}</li>;
+                })}
+              </ul>
+              <hr />
+            </div>
+          ) : (
+            <div />
+          )}
+          {this.props.job.workplaces_employers ? (
+            <div>
+              <label>WORKPLACES/EMPLOYERS:</label>
+              <ul>
+                {this.props.job.workplaces_employers.map(val => {
+                  return <li>{val}</li>;
+                })}
+              </ul>
+              <hr />
+              <hr />
+            </div>
+          ) : (
+            <div />
+          )}
+          {this.props.job.descriptor_profile.main_characteristics ? (
+            <div>
+              <label>Descriptor Profile:</label>
+              <br />
+              <label>Main Charactistics</label>
+              <p>
+                Occupations in this group are characterized by the following
+                aptitudes, interests and worker functions as they relate to main
+                duties:
+              </p>
+              <ul>
+                {this.props.job.descriptor_profile.main_characteristics.map(
+                  mc => {
+                    return <li>{mc.replace(/(<([^>]+)>)/gi, "")}</li>;
+                  }
+                )}
+              </ul>
+            </div>
+          ) : (
+            <div />
+          )}
+        </Frame>
       </div>
     );
   }

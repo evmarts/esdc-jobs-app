@@ -40,9 +40,11 @@ class Search extends Component {
         <h3>How to use:</h3>
         <p>
           Enter the name of an occupation within the National Occupational
-          Classification (NOC) system in the search bar below. Results matching
-          the search will show up below the search bar. Click a result to view
-          information corresponding to that occupation.
+          Classification (NOC) system in the search bar below.
+        </p>
+        <p>
+          Results matching the search will show up below the search bar. Click a
+          result to view information corresponding to that occupation.
         </p>
       </div>
     );
@@ -110,8 +112,6 @@ class Search extends Component {
         <div style={{ marginLeft: "70px", marginRight: "70px" }}>
           <this.Information />
           <button onClick={this.handleNewSearch}>new search</button>
-          <br />
-          <br />
           <br />
           <p>search result:</p>
           <ResultInfo job={this.state.response.data[0].sub_nocs[0]} />
