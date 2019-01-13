@@ -7,6 +7,7 @@ import InterestsFrom from "./InterestsForm";
 import PhysicalActvitiesForm from "./PhysicalActiviesForm";
 import SearchProfile from "./SearchProfile";
 import ResultDisplay from "./ResultDisplay";
+import Aptitude from "./Aptitude";
 
 export default class OccupationForm extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class OccupationForm extends React.Component {
   };
 
   render() {
+    console.log("OccupationForm state:", this.state);
     const styling = {
       display: "inline-block",
       width: "14%",
@@ -36,10 +38,11 @@ export default class OccupationForm extends React.Component {
       position: "relative",
       fontSize: "1.75vw"
     };
-    
+
     return (
       <div>
-        <div style={{marginLeft:"70px"}}>
+        <Aptitude aptitudes={this.state.aptitudes} onSubmit={fields => this.onSubmit(fields, "aptitudes")} />
+        {/* <div style={{ marginLeft: "70px" }}>
           <AptitudesForm
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "aptitudes")}
@@ -66,7 +69,7 @@ export default class OccupationForm extends React.Component {
             styling={styling}
             onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
           />{" "}
-        </div>{" "}
+        </div>{" "} */}
         <button
           onClick={() => {
             this.setState({

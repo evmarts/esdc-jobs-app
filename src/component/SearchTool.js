@@ -52,11 +52,8 @@ class Search extends Component {
 
   handleResultClick = async (result, i) => {
     // make a call to the DB for this noc (the results should include a sub_noc/noc)
-    console.log("index", i);
-    console.log("result", result);
     await this.setState({ hasClicked: true, clicked: result.split(" ")[0] });
 
-    console.log("clicked", this.state.clicked);
     const params = {
       searchItem: this.state.clicked
     };
@@ -92,19 +89,21 @@ class Search extends Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <div style={{ marginLeft: "70px", marginRight: "70px" }}>
-            <ul>
-              {this.state.results.map((result, i) => {
-                return (
-                  <SearchResult
-                    result={result}
-                    index={i}
-                    onClick={this.handleResultClick}
-                  />
-                );
-              })}
-            </ul>
-          </div>
+          <Frame
+            style={{ marginLeft: "70px", width: "160vh", height: "100vh" }}
+          >
+            <div>
+                {this.state.results.map((result, i) => {
+                  return (
+                    <SearchResult
+                      result={result}
+                      index={i}
+                      onClick={this.handleResultClick}
+                    />
+                  );
+                })}
+            </div>
+          </Frame>
         </form>
       );
     } else {
@@ -112,8 +111,6 @@ class Search extends Component {
         <div style={{ marginLeft: "70px", marginRight: "70px" }}>
           <this.Information />
           <button onClick={this.handleNewSearch}>new search</button>
-          <br />
-          <p>search result:</p>
           <ResultInfo job={this.state.response.data[0].sub_nocs[0]} />
         </div>
       );
