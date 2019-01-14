@@ -1,18 +1,9 @@
 import React, { Component } from "react";
-import Form from "./Form";
-import FetchJobs from "./FetchJobs";
 import SearchTool from "./SearchTool";
 import OccupationForm from "./OccupationForm";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-import AptitudesForm from "./AptitudesForm";
-import ResultsV2 from "./ResultsV2";
 import FooterPage from "./FooterPage";
-import Frame from "react-frame-component";
 
-// TODO
-// added clickable results to search tab
-// move submit button on form tab
-// fix form so that we don't need to refresh page to do a new search
 class App extends Component {
   state = {
     response: "",
@@ -57,14 +48,6 @@ class App extends Component {
         </Nav>
       </Navbar>
     );
-  };
-
-  DisplayResult = props => {
-    const isSubmitted = this.state.fields;
-    if (isSubmitted) {
-      return <FetchJobs fields={this.state.fields} />;
-    }
-    return <div />;
   };
 
   render() {

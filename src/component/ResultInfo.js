@@ -1,6 +1,5 @@
 import React from "react";
 import descriptors from "../constants/descriptors";
-import Frame from "react-frame-component";
 
 export default class ResultInfo extends React.Component {
   constructor(props) {

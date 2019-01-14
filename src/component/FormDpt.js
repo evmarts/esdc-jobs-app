@@ -91,7 +91,6 @@ export default class FormDpt extends React.Component {
         <div>
           {Object.keys(descriptors.descriptors.dpt.values).map((val, i) => {
             let selected = this.state[val.toString()] || "";
-            console.log({selected});
             return (
               <div>
                 <p>
