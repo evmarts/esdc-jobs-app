@@ -1,10 +1,4 @@
 import React from "react";
-import AptitudesForm from "./AptitudesForm";
-import DptForm from "./DptForm";
-import EmploymentConditionsForm from "./EmploymentConditionsForm";
-import EnvironmentalConditionsForm from "./EnvironmentalConditionsForm";
-import InterestsFrom from "./InterestsForm";
-import SearchProfile from "./SearchProfile";
 import ResultDisplay from "./ResultDisplay";
 import Aptitude from "./Aptitude";
 import Dpt from "./Dpt";
@@ -29,11 +23,49 @@ export default class OccupationForm extends React.Component {
     });
   };
 
-  render() {
-    console.log("OccupationForm state:", this.state);
+  HowTo = () => {
+    return (
+      <div
+        style={{
+          marginLeft: "70px",
+          marginRight: "70px",
+          backgroundColor: "#f8f8f8"
+        }}
+      >
+        <h3>Form 📝</h3>
+        <p>
+          This page allows one to search for occupations by characteristics
+          outlined in the National Occupational Classification (NOC) system.
+        </p>
+        <h3>How to use ⚙️</h3>
+        <p>
+          Click on each characteristic (e.g. Aptitudes) to expand the search
+          criteria for that characteristic. To search by a range of values,
+          click on the "toggle range" button.
+        </p>
+        <p>
+          You do not need to fill out all the criteria to search for
+          occupations. Search criteria with no input will simply search over the
+          entire range of that criteria. For example, under the Aptitudes
+          characteristic, submitting a search with the General Learning Ability
+          (G) criteria not set will search for occupations with all levels of
+          General Learning Ability.
+        </p>
+        <p>
+          Once you have set all criteria for your search, select the 'search'
+          button at the bottom of the form. A list of occupations will appear
+          below. Click on an occupation to reveal more information on that
+          occupation.
+        </p>
+      </div>
+    );
+  };
 
+  render() {
     return (
       <div>
+        <this.HowTo />
+        <h3 style={{ marginLeft: "70px" }}>Search Criteria:</h3>
         <Aptitude
           aptitudes={this.state.aptitudes}
           onSubmit={fields => this.onSubmit(fields, "aptitudes")}
@@ -70,9 +102,7 @@ export default class OccupationForm extends React.Component {
         </button>{" "}
         <br />
         {this.state.isSubmitted ? (
-          <ResultDisplay
-            searchItem={this.state}
-          />
+          <ResultDisplay searchItem={this.state} />
         ) : (
           <div />
         )}{" "}

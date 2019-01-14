@@ -36,8 +36,13 @@ class Search extends Component {
 
   Information = () => {
     return (
-      <div>
-        <h3>How to use:</h3>
+      <div style={{ backgroundColor: "#f8f8f8" }}>
+        <h3>Search 🔎</h3>
+        <p>
+          This tool allows one to search for an occupation and gain detailed
+          information provided by the ESDC on that occupation.
+        </p>
+        <h3>How to use ⚙️</h3>
         <p>
           Enter the name of an occupation within the National Occupational
           Classification (NOC) system in the search bar below.
@@ -64,53 +69,50 @@ class Search extends Component {
       }
     );
     await this.setState({ response: response });
-    console.log("heeree", this.state.response);
   };
 
   render() {
-    const styling = {
-      display: "inline-block",
-      width: "50%",
-      verticalAlign: "top",
-      marginTight: "10px",
-      marginTop: "0",
-      position: "relative",
-      fontSize: "1.75vw"
-    };
     if (!this.state.response) {
       return (
-        <form>
-          <div style={{ marginLeft: "70px"}}>
-            <this.Information />
-            <input
-              style={{ width: "400px" }}
-              placeholder="Search for occupations..."
-              ref={input => (this.search = input)}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <Frame
-            style={{ marginLeft: "70px", width: "80%", height: "100%" }}
-          >
-            <div>
+        <div>
+          <form>
+            <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+              <this.Information />
+              <input
+                style={{ width: "400px" }}
+                placeholder="Search for occupations..."
+                ref={input => (this.search = input)}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </form>
+          {this.state.query ? (
+            <Frame style={{ marginLeft: "70px", width: "90%", height: "100%" }}>
+              <div>
                 {this.state.results.map((result, i) => {
                   return (
+                    <div>
                     <SearchResult
                       result={result}
                       index={i}
                       onClick={this.handleResultClick}
                     />
+                    </div>
                   );
                 })}
-            </div>
-          </Frame>
-        </form>
+              </div>
+            </Frame>
+          ) : (
+            <div />
+          )}
+        </div>
       );
     } else {
       return (
         <div style={{ marginLeft: "70px" }}>
           <this.Information />
           <button onClick={this.handleNewSearch}>new search</button>
+          <h3>Occupation:</h3>
           <ResultInfo job={this.state.response.data[0].sub_nocs[0]} />
         </div>
       );

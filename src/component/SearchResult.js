@@ -5,8 +5,6 @@ export default class SearchResult extends React.Component {
     super(props);
 
     this.state = {
-      result: this.props.result,
-      index: this.props.index,
       bold: false
     };
   }
@@ -28,9 +26,9 @@ export default class SearchResult extends React.Component {
           this.setState({ bold: false });
         }}
         onClick={() => {
-          this.handleClick(this.state.result, this.state.index);
+          this.handleClick(this.props.result, this.props.index);
         }}
-      >
+        >
         <div>{this.props.result}</div>
       </div>
     );
