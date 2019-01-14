@@ -1,7 +1,7 @@
 import React from "react";
-import FormAptitude from "./FormAptitude";
+import FormPhysicalActivities from "./FormPhysicalActivities";
 
-export default class Aptitude extends React.Component {
+export default class PhysicalActivities extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,16 +19,16 @@ export default class Aptitude extends React.Component {
     return (
       <div style={divStyle}>
         <h4 style={{ display: "inline-block" }}>
-          Aptitudes
+          Physical Activities
         </h4>
         <h4 style={{ display: "inline-block" }} onClick={this.handleCick}>
           {this.state.isExpanded ? <p> (-)</p> : <p> (+)</p>}
         </h4>
         {this.state.isExpanded ? (
-          <FormAptitude
-            aptitude={this.props.aptitude}
+          <FormPhysicalActivities
+            physicalActivities={this.props.physicalActivities}
             onSubmit={fields => {
-              this.props.onSubmit(fields, "aptitude");
+              this.props.onSubmit(fields, "physicalActivities");
             }}
           />
         ) : (

@@ -57,16 +57,6 @@ export default class ResultInfo extends React.Component {
           this.props.styling
         )}
       >
-        <Frame
-          style={Object.assign(
-            {
-              backgroundColor: this.props.bgColor,
-              width: "160vh",
-              height: "100vh"
-            },
-            this.props.styling
-          )}
-        >
           <label>
             {this.props.job.sub_noc
               .concat(" ")
@@ -256,7 +246,6 @@ export default class ResultInfo extends React.Component {
           ) : (
             <div />
           )}
-        </Frame>
       </div>
     );
   }

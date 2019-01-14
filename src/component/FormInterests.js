@@ -1,14 +1,14 @@
 import React from "react";
 import descriptors from "../constants/descriptors";
 
-export default class FormAptitude extends React.Component {
+export default class FormInterests extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       meta: { isRange: false }
     };
-    if (this.props.aptitudes) {
-      for (let entry of Object.entries(this.props.aptitudes)) {
+    if (this.props.interests) {
+      for (let entry of Object.entries(this.props.interests)) {
         if (entry[0] !== "meta") {
           Object.assign(this.state, { [entry[0]]: entry[1] });
         }
@@ -55,26 +55,26 @@ export default class FormAptitude extends React.Component {
     if (this.state.meta.isRange) {
       return (
         <div>
-          {Object.keys(descriptors.descriptors.aptitudes.values).map((val, i) => {
+          {Object.keys(descriptors.descriptors.interests.values).map((val, i) => {
             return (
               <div>
                 <div>
                   <p>
-                    {descriptors.descriptors.aptitudes.values[val].full +
+                    {descriptors.descriptors.interests.values[val].full +
                       " (" +
                       val +
                       ")"}{" "}
                   </p>
                   <select name={val + "min"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.aptitudes.values[val].options.map(o => {
+                    {descriptors.descriptors.interests.values[val].options.map(o => {
                       return <option value={val + o + "min"}>{o}</option>;
                     })}
                   </select>
                   -
                   <select name={val + "max"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.aptitudes.values[val].options.map(o => {
+                    {descriptors.descriptors.interests.values[val].options.map(o => {
                       return <option value={val + o + "max"}>{o}</option>;
                     })}
                   </select>
@@ -89,19 +89,19 @@ export default class FormAptitude extends React.Component {
     } else {
       return (
         <div>
-          {Object.keys(descriptors.descriptors.aptitudes.values).map((val, i) => {
+          {Object.keys(descriptors.descriptors.interests.values).map((val, i) => {
             let selected = this.state[val.toString()] || "";
             return (
               <div>
                 <p>
-                  {descriptors.descriptors.aptitudes.values[val].full +
+                  {descriptors.descriptors.interests.values[val].full +
                     " (" +
                     val +
                     ")"}{" "}
                 </p>
                 <select name={val} onChange={e => this.change(e)}>
                   <option>{selected.substring(1, 2)}</option>
-                  {descriptors.descriptors.aptitudes.values[val].options.map(o => {
+                  {descriptors.descriptors.interests.values[val].options.map(o => {
                     return <option value={val + o}>{o}</option>;
                   })}
                 </select>

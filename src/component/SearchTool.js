@@ -80,7 +80,7 @@ class Search extends Component {
     if (!this.state.response) {
       return (
         <form>
-          <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+          <div style={{ marginLeft: "70px"}}>
             <this.Information />
             <input
               style={{ width: "400px" }}
@@ -90,7 +90,7 @@ class Search extends Component {
             />
           </div>
           <Frame
-            style={{ marginLeft: "70px", width: "160vh", height: "100vh" }}
+            style={{ marginLeft: "70px", width: "80%", height: "100%" }}
           >
             <div>
                 {this.state.results.map((result, i) => {
@@ -108,7 +108,7 @@ class Search extends Component {
       );
     } else {
       return (
-        <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+        <div style={{ marginLeft: "70px" }}>
           <this.Information />
           <button onClick={this.handleNewSearch}>new search</button>
           <ResultInfo job={this.state.response.data[0].sub_nocs[0]} />

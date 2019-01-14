@@ -184,16 +184,18 @@ export default class ResultDisplay extends React.Component {
         return <label>No results matched that search!</label>;
       }
       return (
+        <div style={{marginLeft:"70px"}}>
         <Results
           styling={styling}
           onClick={this.onClick}
           results={this.state.jobs}
         />
+        </div>
       );
     }
     if (!this.state.loading && this.state.selected) {
       return (
-        <div>
+        <div style={{ marginLeft: "70px" }}>
           <Results
             styling={styling}
             onClick={this.onClick}
