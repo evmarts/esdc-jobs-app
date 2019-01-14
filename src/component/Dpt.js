@@ -14,12 +14,13 @@ export default class Dpt extends React.Component {
       isExpanded: !this.state.isExpanded
     });
   };
-
   render() {
     const divStyle = { marginLeft: "70px", marginRight: "70px" };
     return (
       <div style={divStyle}>
-        <h4 style={{ display: "inline-block" }}>Data/Information, People, Things</h4>
+        <h4 style={{ display: "inline-block" }}>
+          Data/Information, People, Things
+        </h4>
         <h4 style={{ display: "inline-block" }} onClick={this.handleCick}>
           {this.state.isExpanded ? <p> (-)</p> : <p> (+)</p>}
         </h4>

@@ -26,9 +26,9 @@ export default class Aptitude extends React.Component {
         </h4>
         {this.state.isExpanded ? (
           <FormAptitude
-            aptitude={this.props.aptitude}
+            aptitudes={this.props.aptitudes}
             onSubmit={fields => {
-              this.props.onSubmit(fields, "aptitude");
+              this.props.onSubmit(fields, "aptitudes");
             }}
           />
         ) : (

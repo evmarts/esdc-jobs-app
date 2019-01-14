@@ -17,10 +17,13 @@ export default class OccupationForm extends React.Component {
   }
 
   onSubmit = async (fields, char) => {
+    console.log(char);
+    console.log(fields);
     await this.setState({
       [char]: fields,
       isSubmitted: false
     });
+    console.log(this.state);
   };
 
   HowTo = () => {
@@ -39,9 +42,9 @@ export default class OccupationForm extends React.Component {
         </p>
         <h3>How to use ⚙️</h3>
         <p>
-          Click on each characteristic (e.g. Aptitudes) to expand the search
-          criteria for that characteristic. To search by a range of values,
-          click on the "toggle range" button.
+          Click on the (+) each characteristic (e.g. Aptitudes) to expand the
+          search criteria for that characteristic. To search by a range of
+          values, click on the "toggle range" button.
         </p>
         <p>
           You do not need to fill out all the criteria to search for

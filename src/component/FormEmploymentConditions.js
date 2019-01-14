@@ -1,7 +1,7 @@
 import React from "react";
 import descriptors from "../constants/descriptors";
 
-export default class FormemploymentRequirements extends React.Component {
+export default class FormEmploymentConditions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,33 +55,26 @@ export default class FormemploymentRequirements extends React.Component {
     if (this.state.meta.isRange) {
       return (
         <div>
-          {Object.keys(
-            descriptors.descriptors.employmentRequirements.values
-          ).map((val, i) => {
+          {Object.keys(descriptors.descriptors.employmentRequirements.values).map((val, i) => {
             return (
               <div>
                 <div>
                   <p>
-                    {descriptors.descriptors.employmentRequirements.values[val]
-                      .full +
+                    {descriptors.descriptors.employmentRequirements.values[val].full +
                       " (" +
                       val +
                       ")"}{" "}
                   </p>
                   <select name={val + "min"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.employmentRequirements.values[
-                      val
-                    ].options.map(o => {
+                    {descriptors.descriptors.employmentRequirements.values[val].options.map(o => {
                       return <option value={val + o + "min"}>{o}</option>;
                     })}
                   </select>
                   -
                   <select name={val + "max"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.employmentRequirements.values[
-                      val
-                    ].options.map(o => {
+                    {descriptors.descriptors.employmentRequirements.values[val].options.map(o => {
                       return <option value={val + o + "max"}>{o}</option>;
                     })}
                   </select>
@@ -96,24 +89,20 @@ export default class FormemploymentRequirements extends React.Component {
     } else {
       return (
         <div>
-          {Object.keys(
-            descriptors.descriptors.employmentRequirements.values
-          ).map((val, i) => {
+          {Object.keys(descriptors.descriptors.employmentRequirements.values).map((val, i) => {
             let selected = this.state[val.toString()] || "";
+            console.log({selected});
             return (
               <div>
                 <p>
-                  {descriptors.descriptors.employmentRequirements.values[val]
-                    .full +
+                  {descriptors.descriptors.employmentRequirements.values[val].full +
                     " (" +
                     val +
                     ")"}{" "}
                 </p>
                 <select name={val} onChange={e => this.change(e)}>
                   <option>{selected.substring(1, 2)}</option>
-                  {descriptors.descriptors.employmentRequirements.values[
-                    val
-                  ].options.map(o => {
+                  {descriptors.descriptors.employmentRequirements.values[val].options.map(o => {
                     return <option value={val + o}>{o}</option>;
                   })}
                 </select>
