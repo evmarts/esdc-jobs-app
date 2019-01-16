@@ -35,7 +35,7 @@ class App extends Component {
               this.setState({ isFormVisible: false, isSearchVisible: false });
             }}
           >
-            ESDC Occupation Search
+            2016 Career Handbook Search
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
@@ -75,45 +75,44 @@ class App extends Component {
       <div>
         <this.TopNav />
         <div style={divStyle}>
-          <h2>Welcome to the ESDC Occupation Search</h2>
-          <p>
-            This searchable database allows objective matching of an
-            individual’s abilities with the occupational characteristics
-            detailed in the 2016 Career Handbook. Used for vocational
-            counselling, this serves as an important step in career exploration
-            and confirmation. Searchable by aptitudes, interests, involvement
-            with data/people/things, physical activities, environmental
-            conditions, education/training, career progression and work
-            settings.
-          </p>
+          <h2>Welcome to the Career Handbook Occupation Search</h2>
+          <h3>The 2016 Career Handbook 📖</h3>
           <p>
             The Career Handbook is the counselling component of the National
-            Occupational Classification (NOC) system. The Career Handbook 2016
-            represents the transposition of content from the Career Handbook
-            2003 to the structure of NOC 2016.
+            Occupational Classification (NOC), the authoritative national
+            resource of occupational information in Canada, developed by
+            Employment and Social Development Canada (ESDC) and Statistics
+            Canada.
+          </p>
+          <h3>The National Occupational Classification 📊</h3>
+          <p>
+            The National Occupational Classification (NOC) contains over 30 000
+            occupational titles, grouped into 500 Unit Groups, and organized
+            according to skill level and type. The 2016 Career Handbook further
+            defines these occupational titles by assigning work characteristics
+            and descriptor scale ratings to the NOC occupational titles. It
+            includes information on aptitudes, interests, involvement with
+            data/people/things, physical activities, environmental conditions,
+            education/training indicators, career progression and work settings.
+          </p>
+          <h3>The Form and Search Tool 🔎</h3>
+          <p>
+            This program searches the 2016 Career Handbook and allows for
+            objective matching of an individual’s abilities (obtained through
+            formal testing, vocational history and records review) with the
+            occupational characteristics detailed in the 2016 Career Handbook.
+            The resulting occupational matches serve as an important step in
+            career exploration and confirmation and is a valuable resource for
+            career counsellors and vocational rehabilitation consultants. The
+            database can be searched by any or all of the work characteristics
+            and descriptor scale ratings in the 2016 Career Handbook. Searches
+            can also be done using a single rating search, or by using a range
+            of values.
           </p>
           <p>
-            The Career Handbook provides global ratings assigned to occupations
-            to further define worker characteristics and other indicators
-            related to occupations that are important for career exploration and
-            informed career decision-making. It includes information on
-            aptitudes, interests, involvement with data/people/things, physical
-            activities, environmental conditions, education/training indicators,
-            career progression and work settings. This counselling resource is
-            used by a wide range of professionals for many applications, and by
-            individuals engaged in self-directed career planning.
-          </p>
-          <p>
-            This edition of the Career Handbook includes 930 occupational
-            profiles that provide updated information in the following sections:
-            Lead Statement, Examples of Job Titles, Workplaces/Employers,
-            Employment Requirements, Exclusions, Occupational Options and
-            Remarks. No updates have been made in the Career Handbook-specific
-            content. This means that the profiles maintain the original
-            descriptor scales and ratings for aptitudes, interests, involvement
-            with data/people/things, physical activities and environmental
-            conditions, as developed in the CH 2003. The presentation format has
-            changed to allow users to easily access and understand information.
+            Occupational titles can also be searched using a keyword search, to
+            obtain detailed information about that occupation from the 2016
+            Career Handbook.
           </p>
         </div>
         <FooterPage />

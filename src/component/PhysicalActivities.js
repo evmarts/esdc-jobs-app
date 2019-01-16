@@ -18,12 +18,10 @@ export default class PhysicalActivities extends React.Component {
     const divStyle = { marginLeft: "70px", marginRight: "70px" };
     return (
       <div style={divStyle}>
-        <h4 style={{ display: "inline-block" }}>
-          Physical Activities
-        </h4>
         <h4 style={{ display: "inline-block" }} onClick={this.handleCick}>
-          {this.state.isExpanded ? <p> (-)</p> : <p> (+)</p>}
+          {this.state.isExpanded ? <p>▼</p> : <p>►</p>}
         </h4>
+        <h4 style={{ display: "inline-block" }}>Physical Activities 💪</h4>
         {this.state.isExpanded ? (
           <FormPhysicalActivities
             physicalActivities={this.props.physicalActivities}
