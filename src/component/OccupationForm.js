@@ -27,8 +27,8 @@ export default class OccupationForm extends React.Component {
     return (
       <div
         style={{
-          marginLeft: "70px",
-          marginRight: "70px",
+          marginLeft: "5%",
+          marginRight: "5%",
           backgroundColor: "#f8f8f8"
         }}
       >
@@ -65,7 +65,7 @@ export default class OccupationForm extends React.Component {
     return (
       <div>
         <this.HowTo />
-        <h3 style={{ marginLeft: "70px" }}>Search Criteria:</h3>
+        <h3 style={{ marginLeft: "5%" }}>Search Criteria:</h3>
         <Aptitude
           aptitudes={this.state.aptitudes}
           onSubmit={fields => this.onSubmit(fields, "aptitudes")}
@@ -91,7 +91,7 @@ export default class OccupationForm extends React.Component {
           onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
         />
         <button
-          style={{ marginLeft: "70px" }}
+          style={{ marginLeft: "5%" }}
           onClick={() => {
             this.setState({
               isSubmitted: true

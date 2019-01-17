@@ -15,7 +15,7 @@ export default class Dpt extends React.Component {
     });
   };
   render() {
-    const divStyle = { marginLeft: "70px", marginRight: "70px" };
+    const divStyle = { marginLeft: "5%", marginRight: "5%" };
     return (
       <div style={divStyle}>
         <h4 style={{ display: "inline-block" }} onClick={this.handleCick}>

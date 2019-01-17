@@ -182,13 +182,13 @@ export default class ResultDisplay extends React.Component {
     if (!this.state.loading && this.state.selected === "") {
       if (this.state.jobs.length <= 0) {
         return (
-          <label style={{ marginLeft: "70px", backgroundColor:"#fad0c3"}}>
+          <label style={{ marginLeft: "5%", backgroundColor:"#fad0c3"}}>
             No results matched that search!
           </label>
         );
       }
       return (
-        <div style={{ marginLeft: "70px" }}>
+        <div style={{ marginLeft: "5%" }}>
           <Results
             styling={styling}
             onClick={this.onClick}
@@ -199,7 +199,7 @@ export default class ResultDisplay extends React.Component {
     }
     if (!this.state.loading && this.state.selected) {
       return (
-        <div style={{ marginLeft: "70px" }}>
+        <div style={{ marginLeft: "5%" }}>
           <Results
             styling={styling}
             onClick={this.onClick}
