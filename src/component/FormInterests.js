@@ -36,7 +36,7 @@ export default class FormInterests extends React.Component {
       }
     } else {
       await this.setState({
-        [value.substring(0, 1)]: value
+        [value.substring(0, 1)]: value.substring(1,2)
       });
     }
     this.props.onSubmit(this.state);
@@ -55,33 +55,39 @@ export default class FormInterests extends React.Component {
     if (this.state.meta.isRange) {
       return (
         <div>
-          {Object.keys(descriptors.descriptors.interests.values).map((val, i) => {
-            return (
-              <div>
+          {Object.keys(descriptors.descriptors.interests.values).map(
+            (val, i) => {
+              return (
                 <div>
-                  <p>
-                    {descriptors.descriptors.interests.values[val].full +
-                      " (" +
-                      val +
-                      ")"}{" "}
-                  </p>
-                  <select name={val + "min"} onChange={e => this.change(e)}>
-                    <option value="" />
-                    {descriptors.descriptors.interests.values[val].options.map(o => {
-                      return <option value={val + o + "min"}>{o}</option>;
-                    })}
-                  </select>
-                  -
-                  <select name={val + "max"} onChange={e => this.change(e)}>
-                    <option value="" />
-                    {descriptors.descriptors.interests.values[val].options.map(o => {
-                      return <option value={val + o + "max"}>{o}</option>;
-                    })}
-                  </select>
+                  <div>
+                    <p>
+                      {descriptors.descriptors.interests.values[val].full +
+                        " (" +
+                        val +
+                        ")"}{" "}
+                    </p>
+                    <select name={val + "min"} onChange={e => this.change(e)}>
+                      <option value="" />
+                      {descriptors.descriptors.interests.values[
+                        val
+                      ].options.map(o => {
+                        return <option value={val + o + "min"}>{o}</option>;
+                      })}
+                    </select>
+                    -
+                    <select name={val + "max"} onChange={e => this.change(e)}>
+                      <option value="" />
+                      {descriptors.descriptors.interests.values[
+                        val
+                      ].options.map(o => {
+                        return <option value={val + o + "max"}>{o}</option>;
+                      })}
+                    </select>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            }
+          )}
           <br />
           <button onClick={this.handleCheck}>toggle range</button>
         </div>
@@ -89,25 +95,29 @@ export default class FormInterests extends React.Component {
     } else {
       return (
         <div>
-          {Object.keys(descriptors.descriptors.interests.values).map((val, i) => {
-            let selected = this.state[val.toString()] || "";
-            return (
-              <div>
-                <p>
-                  {descriptors.descriptors.interests.values[val].full +
-                    " (" +
-                    val +
-                    ")"}{" "}
-                </p>
-                <select name={val} onChange={e => this.change(e)}>
-                  <option>{selected.substring(1, 2)}</option>
-                  {descriptors.descriptors.interests.values[val].options.map(o => {
-                    return <option value={val + o}>{o}</option>;
-                  })}
-                </select>
-              </div>
-            );
-          })}
+          {Object.keys(descriptors.descriptors.interests.values).map(
+            (val, i) => {
+              let selected = this.state[val.toString()] || "";
+              return (
+                <div>
+                  <p>
+                    {descriptors.descriptors.interests.values[val].full +
+                      " (" +
+                      val +
+                      ")"}{" "}
+                  </p>
+                  <select name={val} onChange={e => this.change(e)}>
+                    <option>{selected.substring(1, 2)}</option>
+                    {descriptors.descriptors.interests.values[val].options.map(
+                      o => {
+                        return <option value={val + o}>{o}</option>;
+                      }
+                    )}
+                  </select>
+                </div>
+              );
+            }
+          )}
           <br />
           <button onClick={this.handleCheck}>toggle range</button>
         </div>
