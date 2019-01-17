@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SearchResult from "./SearchResult";
+import SearchResult from "../result/SearchResult";
 import axios from "axios";
-import ResultInfo from "./ResultInfo";
+import ResultInfo from "../result/ResultInfo";
 import Frame from "react-frame-component";
 
 class Search extends Component {
@@ -17,7 +17,6 @@ class Search extends Component {
       query: this.search.value
     });
     const params = { searchItem: this.state.query };
-    // const response = await axios.get("http://localhost/api/search", {
     const response = await axios.get(
       "http://esdc-jobs-api.herokuapp.com/api/search",
       {
@@ -79,7 +78,7 @@ class Search extends Component {
             <div style={{ marginLeft: "5%", marginRight: "5%" }}>
               <this.Information />
               <input
-                style={{ width: "400px" }}
+                style={{ width: "50%" }}
                 placeholder="Search for occupations..."
                 ref={input => (this.search = input)}
                 onChange={this.handleInputChange}

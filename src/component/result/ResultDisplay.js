@@ -133,8 +133,8 @@ export default class ResultDisplay extends React.Component {
     }
 
     let empReq = "";
-    if (this.props.searchItem.employmentConditions) {
-      empReq = this.props.searchItem.employmentConditions.E;
+    if (this.props.searchItem.employmentRequirements) {
+      empReq = this.props.searchItem.employmentRequirements.E;
     }
 
     const params = {

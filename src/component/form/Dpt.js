@@ -1,5 +1,5 @@
 import React from "react";
-import FormDpt from "./FormDpt";
+import FormDpt from "./input/FormDpt";
 
 export default class Dpt extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class Dpt extends React.Component {
           {this.state.isExpanded ? <p>▼</p> : <p>►</p>}
         </h4>
         <h4 style={{ display: "inline-block" }}>
-          Data/Information, People, Things 📈🗣🕹
+          Data/Information, People, Things 📈
         </h4>
         {this.state.isExpanded ? (
           <FormDpt

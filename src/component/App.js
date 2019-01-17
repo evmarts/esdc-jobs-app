@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SearchTool from "./SearchTool";
-import OccupationForm from "./OccupationForm";
+import Search from "./search/Search";
+import Form from "./form/Form";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import FooterPage from "./FooterPage";
 
@@ -56,7 +56,8 @@ class App extends Component {
       return (
         <div>
           <this.TopNav />
-          <OccupationForm display="inline-block" />
+          <Form display="inline-block" />
+          <FooterPage />
         </div>
       );
     }
@@ -64,7 +65,8 @@ class App extends Component {
       return (
         <div>
           <this.TopNav />
-          <SearchTool />
+          <Search />
+          <FooterPage />
         </div>
       );
     }

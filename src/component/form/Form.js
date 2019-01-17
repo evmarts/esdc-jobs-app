@@ -1,13 +1,13 @@
 import React from "react";
-import ResultDisplay from "./ResultDisplay";
+import ResultDisplay from "../result/ResultDisplay";
 import Aptitude from "./Aptitude";
 import Dpt from "./Dpt";
 import Interests from "./Interests";
 import PhysicalActivities from "./PhysicalActivities";
 import EnvironmentalConditions from "./EnvironmentalConditions";
-import EmploymentConditions from "./EmploymentConditions";
+import EmploymentRequirements from "./EmploymentRequirements";
 
-export default class OccupationForm extends React.Component {
+export default class Form extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,23 +39,19 @@ export default class OccupationForm extends React.Component {
         </p>
         <h3>How to use ⚙️</h3>
         <p>
-          Click on the (+) each characteristic (e.g. Aptitudes) to expand the
+          Click on the ► beside each characteristic (e.g. Aptitudes) to expand the
           search criteria for that characteristic. To search by a range of
           values, click on the "toggle range" button.
         </p>
         <p>
           You do not need to fill out all the criteria to search for
           occupations. Search criteria with no input will simply search over the
-          entire range of that criteria. For example, under the Aptitudes
-          characteristic, submitting a search with the General Learning Ability
-          (G) criteria not set will search for occupations with all levels of
-          General Learning Ability.
+          entire range of that criteria.
         </p>
         <p>
-          Once you have set all criteria for your search, select the 'search'
-          button at the bottom of the form. A list of occupations will appear
-          below. Click on an occupation to reveal more information on that
-          occupation.
+          Clicking on the 'search' button at the bottom of the form
+          will load a list of occupations. Click on an occupation to reveal more
+          information.
         </p>
       </div>
     );
@@ -65,7 +61,7 @@ export default class OccupationForm extends React.Component {
     return (
       <div>
         <this.HowTo />
-        <h3 style={{ marginLeft: "5%" }}>Search Criteria:</h3>
+        <h3 style={{ marginLeft: "5%" }}>Search Criteria</h3>
         <Aptitude
           aptitudes={this.state.aptitudes}
           onSubmit={fields => this.onSubmit(fields, "aptitudes")}
@@ -86,9 +82,9 @@ export default class OccupationForm extends React.Component {
           environmentalConditions={this.state.environmentalConditions}
           onSubmit={fields => this.onSubmit(fields, "environmentalConditions")}
         />
-        <EmploymentConditions
-          employmentConditions={this.state.employmentConditions}
-          onSubmit={fields => this.onSubmit(fields, "employmentConditions")}
+        <EmploymentRequirements
+          employmentRequirements={this.state.employmentRequirements}
+          onSubmit={fields => this.onSubmit(fields, "employmentRequirements")}
         />
         <button
           style={{ marginLeft: "5%" }}

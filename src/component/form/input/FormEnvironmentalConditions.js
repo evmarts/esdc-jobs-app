@@ -1,6 +1,5 @@
 import React from "react";
-import descriptors from "../constants/descriptors";
-
+import descriptors from "../../../constants/descriptors";
 export default class FormEnvironmentalConditions extends React.Component {
   constructor(props) {
     super(props);

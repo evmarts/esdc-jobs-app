@@ -1,7 +1,7 @@
 import React from "react";
-import FormEnvironmentalConditions from "./FormEnvironmentalConditions";
+import FormPhysicalActivities from "./input/FormPhysicalActivities";
 
-export default class EnvironmentalConditions extends React.Component {
+export default class PhysicalActivities extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,6 @@ export default class EnvironmentalConditions extends React.Component {
       isExpanded: !this.state.isExpanded
     });
   };
-
   render() {
     const divStyle = { marginLeft: "5%", marginRight: "5%" };
     return (
@@ -22,12 +21,12 @@ export default class EnvironmentalConditions extends React.Component {
         <h4 style={{ display: "inline-block" }} onClick={this.handleCick}>
           {this.state.isExpanded ? <p>▼</p> : <p>►</p>}
         </h4>
-        <h4 style={{ display: "inline-block" }}>Environmental Conditions 🌳</h4>
+        <h4 style={{ display: "inline-block" }}>Physical Activities 💪</h4>
         {this.state.isExpanded ? (
-          <FormEnvironmentalConditions
-            environmentalConditions={this.props.environmentalConditions}
+          <FormPhysicalActivities
+            physicalActivities={this.props.physicalActivities}
             onSubmit={fields => {
-              this.props.onSubmit(fields, "environmentalConditions");
+              this.props.onSubmit(fields, "physicalActivities");
             }}
           />
         ) : (

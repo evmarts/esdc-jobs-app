@@ -1,7 +1,7 @@
 import React from "react";
-import FormEmploymentConditions from "./FormEmploymentConditions";
+import FormAptitude from "./input/FormAptitude";
 
-export default class EmploymentConditions extends React.Component {
+export default class Aptitude extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +21,12 @@ export default class EmploymentConditions extends React.Component {
         <h4 style={{ display: "inline-block" }} onClick={this.handleCick}>
           {this.state.isExpanded ? <p>▼</p> : <p>►</p>}
         </h4>
-        <h4 style={{ display: "inline-block" }}>Employment Requirements 📶</h4>
+        <h4 style={{ display: "inline-block" }}>Aptitudes 📊</h4>
         {this.state.isExpanded ? (
-          <FormEmploymentConditions
-            employmentRequirements={this.props.employmentRequirements}
+          <FormAptitude
+            aptitudes={this.props.aptitudes}
             onSubmit={fields => {
-              this.props.onSubmit(fields, "employmentRequirements");
+              this.props.onSubmit(fields, "aptitudes");
             }}
           />
         ) : (

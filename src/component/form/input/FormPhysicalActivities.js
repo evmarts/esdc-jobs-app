@@ -1,14 +1,13 @@
 import React from "react";
-import descriptors from "../constants/descriptors";
-
-export default class FormEmploymentConditions extends React.Component {
+import descriptors from "../../../constants/descriptors";
+export default class FormPhysicalActivities extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       meta: { isRange: false }
     };
-    if (this.props.employmentRequirements) {
-      for (let entry of Object.entries(this.props.employmentRequirements)) {
+    if (this.props.physicalActivities) {
+      for (let entry of Object.entries(this.props.physicalActivities)) {
         if (entry[0] !== "meta") {
           Object.assign(this.state, { [entry[0]]: entry[1] });
         }
@@ -55,26 +54,26 @@ export default class FormEmploymentConditions extends React.Component {
     if (this.state.meta.isRange) {
       return (
         <div>
-          {Object.keys(descriptors.descriptors.employmentRequirements.values).map((val, i) => {
+          {Object.keys(descriptors.descriptors.physicalActivities.values).map((val, i) => {
             return (
               <div>
                 <div>
                   <p>
-                    {descriptors.descriptors.employmentRequirements.values[val].full +
+                    {descriptors.descriptors.physicalActivities.values[val].full +
                       " (" +
                       val +
                       ")"}{" "}
                   </p>
                   <select name={val + "min"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.employmentRequirements.values[val].options.map(o => {
+                    {descriptors.descriptors.physicalActivities.values[val].options.map(o => {
                       return <option value={val + o + "min"}>{o}</option>;
                     })}
                   </select>
                   -
                   <select name={val + "max"} onChange={e => this.change(e)}>
                     <option value="" />
-                    {descriptors.descriptors.employmentRequirements.values[val].options.map(o => {
+                    {descriptors.descriptors.physicalActivities.values[val].options.map(o => {
                       return <option value={val + o + "max"}>{o}</option>;
                     })}
                   </select>
@@ -89,19 +88,19 @@ export default class FormEmploymentConditions extends React.Component {
     } else {
       return (
         <div>
-          {Object.keys(descriptors.descriptors.employmentRequirements.values).map((val, i) => {
+          {Object.keys(descriptors.descriptors.physicalActivities.values).map((val, i) => {
             let selected = this.state[val.toString()] || "";
             return (
               <div>
                 <p>
-                  {descriptors.descriptors.employmentRequirements.values[val].full +
+                  {descriptors.descriptors.physicalActivities.values[val].full +
                     " (" +
                     val +
                     ")"}{" "}
                 </p>
                 <select name={val} onChange={e => this.change(e)}>
                   <option>{selected.substring(1, 2)}</option>
-                  {descriptors.descriptors.employmentRequirements.values[val].options.map(o => {
+                  {descriptors.descriptors.physicalActivities.values[val].options.map(o => {
                     return <option value={val + o}>{o}</option>;
                   })}
                 </select>

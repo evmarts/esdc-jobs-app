@@ -1,5 +1,5 @@
 import React from "react";
-import descriptors from "../constants/descriptors";
+import descriptors from "../../../constants/descriptors";
 
 export default class FormDpt extends React.Component {
   constructor(props) {
