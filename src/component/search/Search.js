@@ -18,12 +18,12 @@ class Search extends Component {
     });
     const params = { searchItem: this.state.query };
     const response = await axios.get(
-      // "http://esdc-jobs-api.herokuapp.com/api/search",
-      // {
-      //   params
-      // }
-      "http://localhost:3000/api/search",
-      { params }
+      "http://esdc-jobs-api.herokuapp.com/api/search",
+      {
+        params
+      }
+      // "http://localhost:3000/api/search",
+      // { params }
     );
     const responseArray = response.data.map(r => r.sub_noc + " " + r.ch_title);
     this.setState({
@@ -64,12 +64,12 @@ class Search extends Component {
       searchItem: this.state.clicked
     };
     const response = await axios.get(
-      // "http://esdc-jobs-api.herokuapp.com/api/noc",
-      // {
-      //   params
-      // }
-      "http://localhost:3000/api/noc",
-      { params }
+      "http://esdc-jobs-api.herokuapp.com/api/noc",
+      {
+        params
+      }
+      // "http://localhost:3000/api/noc",
+      // { params }
     );
     await this.setState({ response: response });
   };
