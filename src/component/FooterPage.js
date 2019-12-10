@@ -41,6 +41,9 @@ class FooterPage extends React.Component {
             Developed with ❤️ by{" "}
             <a href="https://github.com/evmarts"> evmarts </a>
           </Container>
+          <div>
+            V0.2
+          </div>
         </div>
       </Footer>
     );

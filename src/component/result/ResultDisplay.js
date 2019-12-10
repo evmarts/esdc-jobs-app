@@ -152,13 +152,14 @@ export default class ResultDisplay extends React.Component {
       location: locVal,
       hazards: hazVal,
       discomforts: disVal,
-      employment_requirements: empReq
+      employment_requirements: empReq,
+      any_combination_interests: this.props.searchItem.interests.meta.isAnyInterestCombination
     };
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/jobs",
-      { params }
-      // "http://localhost:3000/api/jobs",
+      // "http://esdc-jobs-api.herokuapp.com/api/jobs",
       // { params }
+      "http://localhost:3000/api/jobs",
+      { params }
     );
     this.setState({
       loading: false,

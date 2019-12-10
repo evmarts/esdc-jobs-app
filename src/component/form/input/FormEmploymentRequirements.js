@@ -37,7 +37,6 @@ export default class FormEmploymentConditions extends React.Component {
       await this.setState({
         [value.substring(0, 1)]: value.substring(1,2)
       });
-      console.log(this.state)
     }
     this.props.onSubmit(this.state);
   };

@@ -5,7 +5,7 @@ export default class FormInterests extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      meta: { isRange: false }
+      meta: { isRange: false, isAnyInterestCombination: false }
     };
     if (this.props.interests) {
       for (let entry of Object.entries(this.props.interests)) {
@@ -36,7 +36,7 @@ export default class FormInterests extends React.Component {
       }
     } else {
       await this.setState({
-        [value.substring(0, 1)]: value.substring(1,2)
+        [value.substring(0, 1)]: value.substring(1, 2)
       });
     }
     this.props.onSubmit(this.state);
@@ -51,7 +51,20 @@ export default class FormInterests extends React.Component {
     });
   };
 
+  handleAnyCombination = () => {
+    console.log(this.state);
+    this.setState({
+      meta: {
+        isAnyInterestCombination: !this.state.meta.isAnyInterestCombination
+      }
+    });
+    Object.keys(this.state).forEach(key => {
+      if (key !== "meta") delete this.state[key];
+    });
+  };
+
   render() {
+    console.log(this.state);
     if (this.state.meta.isRange) {
       return (
         <div>
@@ -90,6 +103,12 @@ export default class FormInterests extends React.Component {
           )}
           <br />
           <button onClick={this.handleCheck}>toggle range</button>
+          <button onClick={this.handleAnyCombination}>
+            toggle any combination
+          </button>
+          {this.state.meta.isAnyInterestCombination && (
+            <div>your search will contain any combination of the above</div>
+          )}
         </div>
       );
     } else {
@@ -99,7 +118,7 @@ export default class FormInterests extends React.Component {
             (val, i) => {
               let selected = this.state[val.toString()] || "";
               return (
-                <div>
+                <div key={i}>
                   <p>
                     {descriptors.descriptors.interests.values[val].full +
                       " (" +
@@ -120,6 +139,12 @@ export default class FormInterests extends React.Component {
           )}
           <br />
           <button onClick={this.handleCheck}>toggle range</button>
+          <button onClick={this.handleAnyCombination}>
+            toggle any combination
+          </button>
+          {this.state.meta.isAnyInterestCombination && (
+            <div>your search will contain any combination of the above</div>
+          )}
         </div>
       );
     }
