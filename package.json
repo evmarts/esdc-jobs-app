@@ -2,9 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-   "engines": {
-    "node": "10.x"
-  },
   "dependencies": {
     "axios": "0.18.0",
     "mdbreact": "4.8.7",
