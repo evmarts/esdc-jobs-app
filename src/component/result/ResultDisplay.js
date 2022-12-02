@@ -156,7 +156,7 @@ export default class ResultDisplay extends React.Component {
       any_combination_interests: this.props.searchItem.interests.meta.isAnyInterestCombination
     };
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/jobs",
+      "https://esdc-jobs-api.herokuapp.com/api/jobs",
       { params }
       // "http://localhost:3000/api/jobs",
       // { params }

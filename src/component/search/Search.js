@@ -18,7 +18,7 @@ class Search extends Component {
     });
     const params = { searchItem: this.state.query };
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/search",
+      "https://esdc-jobs-api.herokuapp.com/api/search",
       {
         params
       }
@@ -64,7 +64,7 @@ class Search extends Component {
       searchItem: this.state.clicked
     };
     const response = await axios.get(
-      "http://esdc-jobs-api.herokuapp.com/api/noc",
+      "https://esdc-jobs-api.herokuapp.com/api/noc",
       {
         params
       }
