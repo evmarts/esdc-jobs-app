@@ -153,7 +153,7 @@ export default class ResultDisplay extends React.Component {
       hazards: hazVal,
       discomforts: disVal,
       employment_requirements: empReq,
-      any_combination_interests: this.props.searchItem.interests.meta.isAnyInterestCombination
+      any_combination_interests: this.props.searchItem.interests ? this.props.searchItem.interests.meta.isAnyInterestCombination : undefined,
     };
     const response = await axios.get(
       "https://esdc-jobs-api.herokuapp.com/api/jobs",
